@@ -7,11 +7,11 @@
   overflow: hidden;
 
   .row {
-    @include flexbox;
-    @include flex-flow(row wrap);
-    @include justify-content(space-between);
-    @include align-items(stretch);
-    @include align-content(space-between);
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: stretch;
+    align-content: space-between;
     max-width: 100%;
   }
 
@@ -22,9 +22,9 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    @include flex-grow(1);
-    @include flex-shrink(1);
-    @include flex-basis(230px);
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 230px;
     font-family: 'Lato';
     font-size: 1.2rem;
     font-weight: 300;

@@ -312,7 +312,7 @@
       height: 100px;
       line-height: 90px;
       border-radius: 0;
-      @include flex-grow(1);
+      flex-grow: 1;
 
       &.left {
         order: 2;
