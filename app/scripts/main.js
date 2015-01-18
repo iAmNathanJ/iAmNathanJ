@@ -17,33 +17,33 @@ $(document).ready(function(){
 	};
 
 	var dom = {
-		win 							: $(window),
-		html 							: $('html'),
-		bod 							: $('body'),
-		htmlBody					: $('html, body'), // Necessary for IE - see goTo()
-		nav 							: getNav(),
-		navLinks 					: $('nav a'),
-		header 						: $('header'),
-		allSections				: $('section'),
-		about 						: $('div#about'),
-		projects					: $('div#project'),
-		contact 					: $('div#contact'),
-		navHome 					: $(this.nav).find('a').attr('href'),
-		navAbout 					: $(this.nav).find('#about'),
-		navProjects 			: $(this.nav).find('#projects'),
-		navContact 				: $(this.nav).find('#contact'),
-		headerOverlay 		: $('header .header-overlay2'),
-		title 						: $('header h1'),
-		logo 							: $('header .logo'),
-		projectThumb 			: $('div.thumb'),
-		projectView 			: $('div.project-view'),
-		projectClose 			: $('div.close-button'),
-		contactForm 			: $('form#contact-form')
+		win               : $(window),
+		html              : $('html'),
+		bod               : $('body'),
+		htmlBody          : $('html, body'), // Necessary for IE - see goTo()
+		nav               : getNav(),
+		navLinks          : $('nav a'),
+		header            : $('header'),
+		allSections       : $('section'),
+		about             : $('div#about'),
+		projects          : $('div#project'),
+		contact           : $('div#contact'),
+		navHome           : $(this.nav).find('a').attr('href'),
+		navAbout          : $(this.nav).find('#about'),
+		navProjects       : $(this.nav).find('#projects'),
+		navContact        : $(this.nav).find('#contact'),
+		headerOverlay     : $('header .header-overlay2'),
+		title             : $('header h1'),
+		logo              : $('header .logo'),
+		projectThumb      : $('div.thumb'),
+		projectView       : $('div.project-view'),
+		projectClose      : $('div.close-button'),
+		contactForm       : $('form#contact-form')
 	};
 	
 	var domData = {
-		navOverhang 			: mobile() ? document.getElementById('menu').clientHeight : 10,
-		headerHeight 			: dom.header.height()
+		navOverhang       : mobile() ? document.getElementById('menu').clientHeight : 10,
+		headerHeight      : dom.header.height()
 	};
 	
 	var scroll = {
@@ -83,12 +83,12 @@ $(document).ready(function(){
 		},
 		
 		isAbove: function(elem){ 
-			var	top = elem.offset().top;
+			var top = elem.offset().top;
 			return this.position() < top;
 		},
 		
 		isBelow: function(elem){
-			var	bottom = elem.offset().top + elem.height();
+			var bottom = elem.offset().top + elem.height();
 			return this.position() > bottom;
 		}
 	};
@@ -228,9 +228,9 @@ $(document).ready(function(){
 	var updateScrolling = function() {
 		if(scroll.newPosition()){
 			window.requestAnimationFrame(function(){
-				handle.windowScroll();		
+				handle.windowScroll();    
 			});
-		}	
+		} 
 		setTimeout(updateScrolling, 17);
 	};
 	updateScrolling();
@@ -301,7 +301,7 @@ $(document).ready(function(){
 			success: function(response){
 				var images = response.images;
 				$('div.project-view div.img-container').html('<img src="' + images[0] + '" alt="">');
-			}			
+			}     
 		});
 	
 	};
