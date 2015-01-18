@@ -1,0 +1,41 @@
+/* @mixin animation($name) {
+	@at-root {
+		@keyframes #{$name} {
+			@content;
+		}
+	}	
+} */
+
+/* @include animation(animate-opacity-10) {
+	opacity: 0.1;
+}
+
+@mixin animate($name, $duration, $fillmode, $timing) {
+	animation-name: #{$name};
+	animation-duration: #{$duration};
+	animation-fill-mode: #{$fillmode};
+	animation-timing-function: #{$timing};
+} */
+
+@keyframes alpha-1 {
+	to {
+		opacity: 1;
+	}
+}
+@keyframes change-background {
+	to {
+		background: $darkblue;
+	}
+}
+@keyframes hide-card {
+	to {
+		font-size: 0;
+	}
+}
+@keyframes show-case-study {
+	to {
+		opacity: 1;
+		font-size: 2rem;
+		margin-top: 0;
+	}
+}
