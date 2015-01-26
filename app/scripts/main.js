@@ -181,14 +181,14 @@ $(document).ready(function(){
     windowResize: function(){
       dom.nav = getNav();
       domData.navOverhang = mobile() ? document.getElementById('menu').clientHeight : 10;
-      updateCSS(bodyWidth());
+      // updateCSS(bodyWidth());
     },
     windowScroll: function(){
       scrollToggleNav();
       setNavColors();
-      if(scroll.isInside(dom.header)){
-        parallaxHeader(scroll.position(), 2);
-      }
+      // if(scroll.isInside(dom.header)){
+      //   parallaxHeader(scroll.position(), 2);
+      // }
     },
     bodyClick: function(){
       if(mobile()){
@@ -228,9 +228,9 @@ $(document).ready(function(){
   var updateScrolling = function() {
     if(scroll.newPosition()){
       window.requestAnimationFrame(function(){
-        handle.windowScroll();    
+        handle.windowScroll();
       });
-    } 
+    }
     setTimeout(updateScrolling, 17);
   };
   updateScrolling();
@@ -238,7 +238,6 @@ $(document).ready(function(){
   //--- Events ---//
 
   dom.win.on('resize', handle.windowResize);
-  // dom.win.on('scroll', handle.windowScroll);
   dom.bod.on('click', handle.bodyClick);
   dom.navLinks.on('click', handle.navClick);
   dom.projectThumb.on('mouseover', handle.projectThumbMouseover);
