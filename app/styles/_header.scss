@@ -46,8 +46,6 @@ header {
     position: absolute;
     top: 174px;
     left: 40px;
-    margin: 0;
-    padding: 0;
     max-width: 100%;
     font-size: 2rem;
     font-weight: 300;
@@ -78,7 +76,7 @@ header {
     }
   }
 
-  .logo {
+  .logo2 {
     position: absolute;
     right: 40px;
     top: 99px;
@@ -124,50 +122,69 @@ header {
       }
       &.three {
         transform: rotateY(90deg)  translateX(100px) translateZ(100px);
-        background: $darkblue;
+        background: $pink;
         z-index: 4;
       }
       &.four {
         transform: rotateY(-90deg) translateX(-100px) translateZ(100px);
-        background: $darkblue;
+        background: $pink;
         z-index: 3;
       }
       &.five {
         transform: rotateX(90deg) translateY(-100px) translateZ(100px);
-        background: $green;
+        background: $pink;
         z-index: 2;
       }
       &.six {
         transform: rotateX(-90deg) translateY(100px) translateZ(100px);
-        background: $green;
+        background: $pink;
         z-index: 1;
       }
-    
-      // &.one {
-      //   transform: rotateX(-20deg) rotateY(45deg) rotateZ(0);
-      // }
-      // &.two {
-      //   transform: rotateX(-20deg) rotateY(-45deg) rotateZ(0) translateX(-100px) translateZ(100px);
-      // }
-      // &.three {
-      //   transform: rotateX(70deg) rotateY(0) rotateZ(-45deg) translateX(-130px) translateY(19px) translateZ(152px) scale(0.69);
-      // }
-      // &.four {
-      //   transform: rotateX(-20deg) rotateY(45deg) rotateZ(0);
-      // }
-      // &.five {
-      //   transform: rotateX(-20deg) rotateY(45deg) rotateZ(0);
-      // }
-      // &.six {
-      //   transform: rotateX(-20deg) rotateY(45deg) rotateZ(0);
-      // }
     }
   
     @media screen and (max-width: 768px) {
       right: 0;
-      top: 120px;
+      top: 140px;
       position: relative;
       margin: 0 auto;
+    }
+  }
+  &:hover {
+    .logo {
+      transform: translateX(0);
+    }
+    .logo-inner {
+      transform: rotateX(0) rotateY(0) translateX(0) translateY(0) translateZ(0);
+    }
+    img.one {
+      transform: rotateX(0);
+      background: $pink;
+      z-index: 6;
+    }
+    img.two {
+      transform: rotateX(0) translateZ(0);
+      background: $pink;
+      z-index: 5;
+    }
+    img.three {
+      transform: rotateY(0)  translateX(0) translateZ(0);
+      background: $pink;
+      z-index: 4;
+    }
+    img.four {
+      transform: rotateY(0) translateX(0) translateZ(0);
+      background: $pink;
+      z-index: 3;
+    }
+    img.five {
+      transform: rotateX(0) translateY(0) translateZ(0);
+      background: $pink;
+      z-index: 2;
+    }
+    img.six {
+      transform: rotateX(0) translateY(0) translateZ(0);
+      background: $pink;
+      z-index: 1;
     }
   }
 }
