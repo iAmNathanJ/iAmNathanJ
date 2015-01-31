@@ -30,7 +30,7 @@ $(document).ready(function(){
     contact           : $('div#contact'),
     navHome           : $(this.nav).find('a').attr('href'),
     navAbout          : $(this.nav).find('#about'),
-    navProjects       : $(this.nav).find('#projects'),
+    navProjects       : $(this.nav).find('#things'),
     navContact        : $(this.nav).find('#contact'),
     headerOverlay     : $('header .header-overlay2'),
     title             : $('header h1'),

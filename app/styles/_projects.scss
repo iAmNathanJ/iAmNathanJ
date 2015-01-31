@@ -1,3 +1,22 @@
+.project-arrow {
+  @extend .noselect;
+  display: block;
+  position: relative;
+  float: right;
+  max-width: 40%;
+  margin: 20px 0;
+  padding: 0;
+  text-align: left;
+  overflow: hidden;
+  cursor: pointer;
+  fill: $black10;
+  transition: all 250ms ease-out;
+
+  &:hover {
+    fill: $pink;
+  }
+}
+
 .project {
   @extend .noselect;
   display: block;
