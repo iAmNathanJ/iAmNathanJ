@@ -45,53 +45,49 @@ $(document).ready(function(){
     navOverhang       : mobile() ? document.getElementById('menu').clientHeight : 10,
     headerHeight      : dom.header.height()
   };
-  
-  var scroll = {
+
+  var scroll = (function(){
     
-    prevPosition: dom.bod.scrollTop() || dom.html.scrollTop(),
+    return {
+      prevPosition: dom.bod.scrollTop() || dom.html.scrollTop(),
 
-    getPosition: function(){
-      return dom.bod.scrollTop() || dom.html.scrollTop();
-    },
+      getPosition: function(){
+        return dom.bod.scrollTop() || dom.html.scrollTop();
+      },
 
-    position: function(){
-      return this.getPosition() < 0 ? 0 : this.getPosition(); // Prevent negative scroll positions for bouncy browsers (osx safari, etc)
-    },
-    
-    newPosition: function(){
-      return this.position() !== this.prevPosition;
-    },
+      position: function(){
+        return this.getPosition() < 0 ? 0 : this.getPosition(); // Prevent negative scroll positions for bouncy browsers (osx safari, etc)
+      },
+      
+      newPosition: function(){
+        return this.position() !== this.prevPosition;
+      },
 
-    prevDirection: null,
+      prevDirection: null,
 
-    direction: function(){
-      return this.prevPosition < this.position() ? 'down' : 'up';
-    },
+      direction: function(){
+        return this.prevPosition < this.position() ? 'down' : 'up';
+      },
 
-    newDirection: function(){
-      return this.direction() !== this.prevDirection;
-    },
+      newDirection: function(){
+        return this.direction() !== this.prevDirection;
+      },
 
-    isInside: function(elem){ // elem must be jquery object
-      /*var position = this.position(),
-        range = {
-          top: elem.offset().top - dom.nav.height(),
-          bottom: elem.offset().top + elem.height()
-        };*/
-
-      return ( this.position() >= (elem.offset().top - dom.nav.height()) && this.position() < (elem.offset().top + elem.height()) ) ? true : false;
-    },
-    
-    isAbove: function(elem){ 
-      var top = elem.offset().top;
-      return this.position() < top;
-    },
-    
-    isBelow: function(elem){
-      var bottom = elem.offset().top + elem.height();
-      return this.position() > bottom;
+      isInside: function(elem){ // elem must be jquery object
+        return ( this.position() >= (elem.offset().top - dom.nav.height()) && this.position() < (elem.offset().top + elem.height()) ) ? true : false;
+      },
+      
+      isAbove: function(elem){ 
+        var top = elem.offset().top;
+        return this.position() < top;
+      },
+      
+      isBelow: function(elem){
+        var bottom = elem.offset().top + elem.height();
+        return this.position() > bottom;
+      }
     }
-  };
+  }());
 
   
 
