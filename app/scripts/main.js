@@ -1,304 +1,285 @@
 'use strict';
 
-$(document).ready(function(){
-
-  var body = $('body');
-
-  var bodyWidth = function(){
-    return body.width();
-  };
-
-  var mobile = function(){
-    return bodyWidth() > 768 ? false : true;
-  };
+(function($){
   
-  var getNav = function(){
-    return mobile() ?  $('nav#mobile-nav') : $('nav#standard-nav');
-  };
+  $(document).ready(function(){
 
-  var dom = {
-    win               : $(window),
-    html              : $('html'),
-    bod               : $('body'),
-    htmlBody          : $('html, body'), // Necessary for IE - see goTo()
-    nav               : getNav(),
-    navLinks          : $('nav a'),
-    header            : $('header'),
-    allSections       : $('section'),
-    about             : $('div#about'),
-    projects          : $('div#project'),
-    contact           : $('div#contact'),
-    navHome           : $(this.nav).find('a').attr('href'),
-    navAbout          : $(this.nav).find('#about'),
-    navProjects       : $(this.nav).find('#things'),
-    navContact        : $(this.nav).find('#contact'),
-    headerOverlay     : $('header .header-overlay2'),
-    title             : $('header h1'),
-    logo              : $('header .logo'),
-    projectThumb      : $('div.thumb'),
-    projectView       : $('div.project-view'),
-    projectClose      : $('div.close-button'),
-    contactForm       : $('form#contact-form')
-  };
-  
-  var domData = {
-    navOverhang       : mobile() ? document.getElementById('menu').clientHeight : 10,
-    headerHeight      : dom.header.height()
-  };
+    var body = $('body');
 
-  var scroll = (function(){
+    var mobile = function(){
+      return elemWidth(body) > 768 ? false : true;
+    };
+
+    var elemWidth = function(elem){
+      return elem.width();
+    };
     
-    return {
-      prevPosition: dom.bod.scrollTop() || dom.html.scrollTop(),
-
-      getPosition: function(){
-        return dom.bod.scrollTop() || dom.html.scrollTop();
-      },
-
-      position: function(){
-        return this.getPosition() < 0 ? 0 : this.getPosition(); // Prevent negative scroll positions for bouncy browsers (osx safari, etc)
-      },
-      
-      newPosition: function(){
-        return this.position() !== this.prevPosition;
-      },
-
-      prevDirection: null,
-
-      direction: function(){
-        return this.prevPosition < this.position() ? 'down' : 'up';
-      },
-
-      newDirection: function(){
-        return this.direction() !== this.prevDirection;
-      },
-
-      isInside: function(elem){ // elem must be jquery object
-        return ( this.position() >= (elem.offset().top - dom.nav.height()) && this.position() < (elem.offset().top + elem.height()) ) ? true : false;
-      },
-      
-      isAbove: function(elem){ 
-        var top = elem.offset().top;
-        return this.position() < top;
-      },
-      
-      isBelow: function(elem){
-        var bottom = elem.offset().top + elem.height();
-        return this.position() > bottom;
-      }
-    }
-  }());
-
-  
-
-  //--- Page Setup ---//
-
-  dom.bod.animate({opacity: 1});
-  $('nav a[href=#home]').css({'background': 'rgba(201, 68, 197, 0.2)'});
-  $('h2').fitText(1, {maxFontSize: '48px'});
+    var getNav = function(){
+      return mobile() ?  $('nav#mobile-nav') : $('nav#standard-nav');
+    };
 
 
 
-  //--- General Functions ---//
+    // D O M   R E F E R E N C E
 
-  var hideNav = function(){
-    dom.nav.css({top: (-dom.nav.height() + domData.navOverhang)});
-  };
-
-  var showNav = function(){
-    dom.nav.css({top: 0});
-  };
-
-  var toggleNav = function(){
-    if(parseInt(dom.nav.css('top')) < 0){
-      showNav();
-    }else{
-      hideNav();
-    }
-  };
-  
-  var goTo = function(section){
-    dom.htmlBody.animate({scrollTop: $(section).offset().top}); //This selects 'html, body' for IE page navigation.
-    if(mobile()){ hideNav(); }
-  };
+    var dom = {
+      win               : $(window),
+      html              : $('html'),
+      bod               : $('body'),
+      htmlBody          : $('html, body'), // Necessary for IE - see goTo()
+      nav               : getNav(),
+      navLinks          : $('nav a'),
+      header            : $('header'),
+      allSections       : $('section'),
+      about             : $('div#about'),
+      projects          : $('div#project'),
+      contact           : $('div#contact'),
+      navHome           : $(this.nav).find('a').attr('href'),
+      navAbout          : $(this.nav).find('#about'),
+      navProjects       : $(this.nav).find('#things'),
+      navContact        : $(this.nav).find('#contact'),
+      headerOverlay     : $('header .header-overlay2'),
+      title             : $('header h1'),
+      logo              : $('header .logo'),
+      projectThumb      : $('div.thumb'),
+      projectView       : $('div.project-view'),
+      projectClose      : $('div.close-button'),
+      contactForm       : $('form#contact-form')
+    };
     
-  var setNavColors = function(){
-    dom.allSections.each(function(i, elem){
-      if(scroll.isInside($(elem), domData.navOverhang)){
-        $('nav a[href=#'+ $(elem)[0].id +']').css({'background-color': 'rgba(201, 68, 197, 0.2)'})
-          .siblings('a').css({'background-color': 'rgba(201, 68, 91, 0)'});
-      }
+    var domData = {
+      navOverhang: mobile() ? document.getElementById('menu').clientHeight : 10,
+      headerHeight: dom.header.height()
+    };
 
-    });
-  };
-
-  var scrollToggleNav = function(){
-    // var direction = scroll.direction(),
-    // position = scroll.position();
-    if(scroll.direction() !== scroll.prevDirection && !mobile()) {
-      if(scroll.direction() === 'down'){
-        hideNav();
-      }else{
-        showNav();
-      }
-    }
-    scroll.prevDirection = scroll.direction();
-    scroll.prevPosition = scroll.position(); // Update last scroll position to equal new scroll position
-  };
-
-  var parallaxHeader = function(scrollPos, intensity){
-    var curve = scrollPos * intensity,
-      topMargin = 40 - curve;
+    var scroll = (function(){
       
-      // dom.title.css({magrinTop: topMargin});
-      dom.title.css({marginTop: 40 - (scrollPos * intensity)});
-      dom.logo.css({marginTop: 40 - (scrollPos * intensity)});
-  };
+      return {
+        prevPosition: dom.bod.scrollTop() || dom.html.scrollTop(),
 
-  var updateCSS = function(bodyWidth){
-    if(bodyWidth > 768){
-      dom.title.css({left: 40});
-      domData.titleOffsetLeft = 40;
-      dom.logo.css({right: 40});
-      domData.logoOffsetRight = 40;
-    }else{
-      dom.title.css({left: 0});
-      domData.titleOffsetLeft = 0;
-      dom.logo.css({right: 0});
-      domData.logoOffsetRight = 0;
-    }
-  };
+        getPosition: function(){
+          return dom.bod.scrollTop() || dom.html.scrollTop();
+        },
 
+        position: function(){
+          return this.getPosition() < 0 ? 0 : this.getPosition(); // Prevent negative scroll positions for bouncy browsers (osx safari, etc)
+        },
+        
+        newPosition: function(){
+          return this.position() !== this.prevPosition;
+        },
 
+        prevDirection: null,
 
-  //--- Event Handlers---//
+        direction: function(){
+          return this.prevPosition < this.position() ? 'down' : 'up';
+        },
 
-  var handle = {
-    windowResize: function(){
-      dom.nav = getNav();
-      domData.navOverhang = mobile() ? document.getElementById('menu').clientHeight : 10;
-      // updateCSS(bodyWidth());
-    },
-    windowScroll: function(){
-      scrollToggleNav();
-      setNavColors();
-      // if(scroll.isInside(dom.header)){
-      //   parallaxHeader(scroll.position(), 2);
-      // }
-    },
-    bodyClick: function(){
-      if(mobile()){
-        if(parseInt(dom.nav.css('top')) > -dom.nav.find('a').height()){
-          hideNav();
+        newDirection: function(){
+          return this.direction() !== this.prevDirection;
+        },
+
+        isInside: function(elem){ // elem must be jquery object
+          return ( this.position() >= (elem.offset().top - dom.nav.height()) && this.position() < (elem.offset().top + elem.height()) ) ? true : false;
+        },
+        
+        isAbove: function(elem){ 
+          var top = elem.offset().top;
+          return this.position() < top;
+        },
+        
+        isBelow: function(elem){
+          var bottom = elem.offset().top + elem.height();
+          return this.position() > bottom;
         }
-      }
-    },
-    navClick: function(e){
-      e.preventDefault();
-      var self = $(this);
-      if(this.id !== 'menu'){
-        goTo(self.attr('href'));
-      }else{
-        toggleNav();
-      }
-    },
-    projectThumbMouseover: function(){
-      var $this = $(this);
-      $this.find('.hover-card').addClass('mouseover');
-      $this.find('img.project-thumb-hover').addClass('mouseover');
-    },
-    projectThumbMouseout: function(){
-      var $this = $(this);
-      $this.find('.hover-card').removeClass('mouseover');
-      $this.find('img.project-thumb-hover').removeClass('mouseover');
-    },
-    projectThumbClick: function(e){
-      dom.projectView.addClass('show');
-      getProjectImages(e);
-    },
-    projectCloseClick: function(){
-      dom.projectView.removeClass('show');
-    }
-  };
+      };
+    }());
 
-  var updateScrolling = function() {
-    if(scroll.newPosition()){
-      window.requestAnimationFrame(function(){
-        handle.windowScroll();
+
+
+    // P A G E   S E T U P
+
+    dom.bod.animate({opacity: 1});
+    $('nav a[href=#home]').css({'background': 'rgba(201, 68, 197, 0.2)'});
+    $('h2').fitText(1, {maxFontSize: '48px'});
+
+
+
+    // D O M   M A N I P U L A T I O N
+
+    function hideNav(){
+      dom.nav.css({top: (-dom.nav.height() + domData.navOverhang)});
+    }
+
+    function showNav(){
+      dom.nav.css({top: 0});
+    }
+
+    function toggleNav(){
+      if(parseInt(dom.nav.css('top')) < 0){
+        showNav();
+      }else{
+        hideNav();
+      }
+    }
+    
+    function goTo(section){
+      dom.htmlBody.animate({scrollTop: $(section).offset().top}); //This selects 'html, body' for IE page navigation.
+      if(mobile()){ hideNav(); }
+    }
+      
+    function setNavColors(){
+      dom.allSections.each(function(i, elem){
+        if(scroll.isInside($(elem), domData.navOverhang)){
+          $('nav a[href=#'+ $(elem)[0].id +']').css({'background-color': 'rgba(201, 68, 197, 0.2)'})
+            .siblings('a').css({'background-color': 'rgba(201, 68, 91, 0)'});
+        }
+
       });
     }
-    setTimeout(updateScrolling, 17);
-  };
-  updateScrolling();
 
-  //--- Events ---//
-
-  dom.win.on('resize', handle.windowResize);
-  dom.bod.on('click', handle.bodyClick);
-  dom.navLinks.on('click', handle.navClick);
-  dom.projectThumb.on('mouseover', handle.projectThumbMouseover);
-  dom.projectThumb.on('mouseout', handle.projectThumbMouseout);
-  dom.projectThumb.on('click', handle.projectThumbClick);
-  dom.projectClose.on('click', handle.projectCloseClick);
-
-
-
-  //--- Ajax ---//
-
-  var emailFail = function(status, statusText){
-    return '<p>Uh oh...<br>! ' + status + ' ' + statusText + '<br>Please reload the page and try again. If this problem continues you can email me directly. Thank you.</p>';
-  };
-
-  var sendMail = function(e){
-
-    e.preventDefault();
-    goTo('#contact');
-    
-    $.ajax({
-
-      type: 'post',
-      url: 'contact.php',
-      data: dom.contactForm.serialize(),
-
-      error: function(response){
-        $('div#form-messages').html(emailFail(response.status, response.statusText));
-      },
-      success: function(response, textStatus, xhr){
-        
-        // contact.php will send a status code of 206 if further validation is required.
-        // otherwise get rid of the form
-        
-        if(xhr.status === 200) {
-          dom.contactForm.hide();
+    function scrollToggleNav(){
+      if(scroll.direction() !== scroll.prevDirection && !mobile()) {
+        if(scroll.direction() === 'down'){
+          hideNav();
+        }else{
+          showNav();
         }
-        $('div#form-messages').html(response);
       }
+      scroll.prevDirection = scroll.direction();
+      scroll.prevPosition = scroll.position(); // Update last scroll position to equal new scroll position
+    }
 
-    });
-  };
-  
-  dom.contactForm.on('submit', function(e){
-    sendMail(e);
-  });
 
-  var getProjectImages = function(e){
-    
-    e.preventDefault();
-    
-    $.ajax({
 
-      type: 'get',
-      url: 'partials/metro.json',
+    // E V E N T   H A N D L E R S
 
-      error: function(response){
-        console.log(response);
+    var handle = {
+      windowResize: function(){
+        dom.nav = getNav();
+        domData.navOverhang = mobile() ? document.getElementById('menu').clientHeight : 10;
+        // updateCSS(bodyWidth());
       },
-      success: function(response){
-        var images = response.images;
-        $('div.project-view div.img-container').html('<img src="' + images[0] + '" alt="">');
-      }     
-    });
-  
-  };
+      windowScroll: function(){
+        scrollToggleNav();
+        setNavColors();
+      },
+      bodyClick: function(){
+        if(mobile()){
+          if(parseInt(dom.nav.css('top')) > -dom.nav.find('a').height()){
+            hideNav();
+          }
+        }
+      },
+      navClick: function(e){
+        e.preventDefault();
+        var self = $(this);
+        if(this.id !== 'menu'){
+          goTo(self.attr('href'));
+        }else{
+          toggleNav();
+        }
+      },
+      projectThumbMouseover: function(){
+        var $this = $(this);
+        $this.find('.hover-card').addClass('mouseover');
+        $this.find('img.project-thumb-hover').addClass('mouseover');
+      },
+      projectThumbMouseout: function(){
+        var $this = $(this);
+        $this.find('.hover-card').removeClass('mouseover');
+        $this.find('img.project-thumb-hover').removeClass('mouseover');
+      },
+      projectThumbClick: function(e){
+        dom.projectView.addClass('show');
+        getProjectImages(e);
+      },
+      projectCloseClick: function(){
+        dom.projectView.removeClass('show');
+        $('div.project-view div.img-container').html('');
+      }
+    };
 
-});
+    (function updateScrolling() {
+      if(scroll.newPosition()){
+        window.requestAnimationFrame(function(){
+          handle.windowScroll();
+        });
+      }
+      setTimeout(updateScrolling, 17);
+    })();
+
+
+
+    // E V E N T S
+
+    dom.win.on('resize', handle.windowResize);
+    dom.bod.on('click', handle.bodyClick);
+    dom.navLinks.on('click', handle.navClick);
+    dom.projectThumb.on('mouseover', handle.projectThumbMouseover);
+    dom.projectThumb.on('mouseout', handle.projectThumbMouseout);
+    dom.projectThumb.on('click', handle.projectThumbClick);
+    dom.projectClose.on('click', handle.projectCloseClick);
+
+
+
+    // A J A X
+
+    function emailFail(status, statusText){
+      return '<p>Uh oh...<br>! ' + status + ' ' + statusText + '<br>Please reload the page and try again. If this problem continues you can email me directly. Thank you.</p>';
+    }
+
+    function sendMail(e){
+
+      e.preventDefault();
+      goTo('#contact');
+      
+      $.ajax({
+
+        type: 'post',
+        url: 'contact.php',
+        data: dom.contactForm.serialize(),
+
+        error: function(response){
+          $('div#form-messages').html(emailFail(response.status, response.statusText));
+        },
+        success: function(response, textStatus, xhr){
+          
+          // contact.php will send a status code of 206 if further validation is required.
+          // otherwise get rid of the form
+          
+          if(xhr.status === 200) {
+            dom.contactForm.hide();
+          }
+          $('div#form-messages').html(response);
+        }
+
+      });
+    }
+    
+    dom.contactForm.on('submit', function(e){
+      sendMail(e);
+    });
+
+    function getProjectImages(e){
+      
+      e.preventDefault();
+      
+      $.ajax({
+
+        type: 'get',
+        url: 'partials/metro.json',
+
+        error: function(response){
+          console.log(response);
+        },
+        success: function(response){
+          var images = response.images;
+          $('div.project-view div.img-container').html('<img src="' + images[0] + '" alt="">');
+        }     
+      });
+    
+    }
+
+  });
+})(jQuery);
