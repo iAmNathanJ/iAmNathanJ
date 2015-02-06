@@ -1,2 +1,0 @@
-# iAmNathanJ
-### My personal source.
