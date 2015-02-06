@@ -10,7 +10,7 @@ section#contact.green
 
     .form-container
       #form-messages.form-messages
-      form#contact-form(action="contact.php")
+      form#contact-form(action="mail" novalidate)
         .row
           input#name(type="text" name="name" placeholder="*Name")
           input#email(type="email" name="email" placeholder="*Email")
@@ -19,4 +19,5 @@ section#contact.green
           br
         .row
           button#mail-button
-            img(alt="mail me" src="images/send4.svg") SEND
+            img(alt="mail me" src="images/send4.svg")
+            | SEND

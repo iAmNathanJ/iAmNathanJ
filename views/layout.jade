@@ -8,7 +8,7 @@ html.no-js
     link(rel='stylesheet', href='/style/style.css')
   body
     script
-      | document.body.style.opacity = 0;
+    | document.body.style.opacity = 0;
     
     include nav.jade
     include header.jade
@@ -19,7 +19,3 @@ html.no-js
     include footer.jade
 
     // block content
-
-    script(src="bower_components/jquery/dist/jquery.js")
-    script(src="scripts/main.js")
-    script(src="scripts/jquery.fittext.js")
