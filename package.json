@@ -17,5 +17,8 @@
     "node-sass": "^2.0.0-beta",
     "sendgrid": "^1.6.0",
     "serve-favicon": "~2.2.0"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5"
   }
 }
