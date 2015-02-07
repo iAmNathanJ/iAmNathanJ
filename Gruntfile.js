@@ -8,17 +8,11 @@ module.exports = function (grunt) {
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
 
-  // Configurable paths
-  var config = {
-    app: '.',
-    dist: './dist'
-  };
-
   // Define the configuration for all the tasks
   grunt.initConfig({
 
-    // Project settings
-    config: config,
+    // Project Settings
+    config: grunt.file.readJSON('grunt-config.json'),
 
     // Watches files for changes and runs tasks based on the changed files
     watch: {
@@ -37,27 +31,29 @@ module.exports = function (grunt) {
       //   files: ['test/spec/{,*/}*.js'],
       //   tasks: ['test:watch']
       // },
-      // gruntfile: {
-      //   files: ['Gruntfile.js']
-      // },
+      gruntfile: {
+        files: ['Gruntfile.js']
+      },
       sass: {
-        files: ['<%= config.app %>/public/styles/{,*/}*.{scss,sass}'],
-        tasks: ['sass:server', 'autoprefixer']
-      },
-      styles: {
-        files: ['<%= config.app %>/public/styles/{,*/}*.css'],
-        tasks: ['newer:copy:styles', 'autoprefixer']
-      },
-      livereload: {
         options: {
-          livereload: '<%= connect.options.livereload %>'
+          sourcemap: true
         },
-        files: [
-          '<%= config.app %>/{,*/}*.html',
-          '.tmp/styles/{,*/}*.css',
-          '<%= config.app %>/images/{,*/}*'
-        ]
+        dist: {
+          files: {
+            '<%= config.dev.styles %>main.scss': '<%= config.dist.styles %>style.css'
+          }
+        }
       }
+      // livereload: {
+      //   options: {
+      //     livereload: '<%= connect.options.livereload %>'
+      //   },
+      //   files: [
+      //     '<%= config.build.styles{,*/}*.css',
+      //     '<%= config.dev.images %>{,*/}*'
+      //   ]
+      // }
     }
   });
+  grunt.resgisterTask('build', ['watch']);
 }

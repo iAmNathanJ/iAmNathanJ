@@ -1,6 +1,6 @@
 {
   "name": "iAmNathanJ",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
@@ -14,7 +14,6 @@
     "jade": "~1.9.1",
     "morgan": "~1.5.1",
     "nconf": "^0.7.1",
-    "node-sass": "^2.0.0-beta",
     "sendgrid": "^1.6.0",
     "serve-favicon": "~2.2.0"
   },
@@ -31,13 +30,13 @@
     "grunt-contrib-htmlmin": "^0.3.0",
     "grunt-contrib-imagemin": "^0.8.0",
     "grunt-contrib-jshint": "^0.10.0",
-    "grunt-contrib-sass": "^0.7.3",
     "grunt-contrib-uglify": "^0.5.1",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-mocha": "^0.4.10",
     "grunt-modernizr": "^0.5.2",
     "grunt-newer": "^0.7.0",
     "grunt-rev": "^0.1.0",
+    "grunt-sass": "^0.17.0",
     "grunt-svgmin": "^0.4.0",
     "grunt-usemin": "^2.3.0",
     "grunt-wiredep": "^1.7.0",
