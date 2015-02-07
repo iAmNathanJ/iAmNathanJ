@@ -10,5 +10,5 @@ app/stock
 app/partials
 app/scripts/main1.js
 test
-public
+public/images
 config.json
