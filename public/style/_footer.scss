@@ -1,0 +1,101 @@
+footer {
+  position: relative;
+  margin: 0;
+  padding: 40px 0;
+  width: 100%;
+  clear: both;
+  background: #333;
+  overflow: hidden;
+  
+  .footer-inner {
+    position: relative;
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 40px;
+
+    @media screen and (max-width: 460px) {
+      padding: 20px;
+    }
+
+    .links {
+      position: relative;
+      display: inline-block;
+      margin: -56px 0 0;
+      padding: 0 30px 0 0;
+      width: 50%;
+      overflow: hidden;
+      text-align: right;
+      vertical-align: middle;
+
+      a {
+        display: inline-block;
+        width: 60px;
+        height: 60px;
+        margin: 0 10px;
+        padding: 18px;
+        background: $white05;
+        border-radius: 50%;
+        transition: all 0.2s ease-out;
+
+        @media screen and (min-width: 768px) {
+          &:last-of-type {
+            margin-right: 0;
+          }
+        }
+      }
+      
+      a:hover {
+        background: $pink;
+        border-radius: 0 50% 50% 50%;
+        svg path { fill: $white80; }
+      }
+    }
+
+    p {
+      position: relative;
+      display: inline-block;
+      margin: 0;
+      padding: 0 0 0 30px;
+      width: 49%;
+      font-size: 20px;
+      font-weight: 100;
+      text-align: left;
+      letter-spacing: 1px;
+      line-height: 1.5rem;
+      color: $white50;
+      border-left: 1px solid $white10;
+    }
+
+    svg path {
+      fill: $white50;
+      transition: fill 0.2s ease-out;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 60px 0;
+    .footer-inner {
+      .links {
+        margin: 20px 0;
+        padding: 0;
+        width: 100%;
+        text-align: center;
+      }
+      a {
+        line-height: 20px;
+      }
+      p {
+        margin: 20px 0;
+        padding: 0;
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
+        border: none;
+      }
+      .links {
+        width: 100%;
+      }
+    }
+  }
+
+}

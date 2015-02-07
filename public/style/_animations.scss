@@ -1,0 +1,11 @@
+@mixin animate($name, $duration, $fillmode, $timing) {
+  @at-root {
+    @keyframes #{$name} {
+      @content;
+    }
+  }
+  animation-name: #{$name};
+  animation-duration: #{$duration};
+  animation-fill-mode: #{$fillmode};
+  animation-timing-function: #{$timing};
+}
