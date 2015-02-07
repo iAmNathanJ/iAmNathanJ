@@ -241,7 +241,7 @@
         data: dom.contactForm.serialize(),
 
         error: function(response){
-          $('div#form-messages').html(emailFail(response.status, response.statusText));
+          $('div#form-messages').html(response);
         },
         success: function(response, textStatus, xhr){
           
