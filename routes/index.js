@@ -23,7 +23,7 @@ router.get('/', function(req, res, next) {
 // ~ P O S T ~   M A I L   F O R M
 
 router.post('/mail', function(req, res) {
-  console.log('User: ' + nconf.get('sendgrid:user'), 'Key: ' + nconf.get('sendgrid:key'));
+
   // Call Validation
   validate(req.body, function(err, data) {
     
