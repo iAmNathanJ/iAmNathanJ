@@ -11,3 +11,4 @@ app/partials
 app/scripts/main1.js
 test
 public
+config.json

@@ -1,8 +1,15 @@
 var express = require('express');
-var sendgrid = require('sendgrid')('iAmNathanJ', '56ddM!@#');
+var fs = require('fs');
+var nconf = require('nconf');
+
+nconf.file('./config.json');
+
+var sendgrid = require('sendgrid')(nconf.get('sendgrid:user'), nconf.get('sendgrid:key'));
 var validate = require('./validate.js');
 
 var router = express.Router();
+
+
 
 
 // ~ G E T ~   H O M E   P A G E
@@ -28,10 +35,10 @@ router.post('/mail', function(req, res) {
 
     // If form is valid, set up email
     var email = new sendgrid.Email({
-      to: 'jacobs.123@gmail.com',
+      to: nconf.get('contact:email'),
       from: req.body.email,
       fromname: req.body.name,
-      subject: '*** I AM NATHAN J - FORM MAIL ***',
+      subject: nconf.get('contact:subject'),
       text: req.body.message
     });
     
