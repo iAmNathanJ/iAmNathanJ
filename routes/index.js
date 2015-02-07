@@ -2,7 +2,7 @@ var express = require('express');
 var fs = require('fs');
 var nconf = require('nconf');
 
-nconf.file('./config.json');
+nconf.file('./app-config.json');
 
 var sendgrid = require('sendgrid')(nconf.get('sendgrid:user'), nconf.get('sendgrid:key'));
 var validate = require('./validate.js');

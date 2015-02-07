@@ -16,19 +16,17 @@ module.exports = function(grunt) {
 
 
     sass: {
-      options: {
-        sourceMap: true
-      },
       dist: {
-        file: {
-          './public/styles/main.scss': './public/styles/NEWstyle.css'
+        options: {
+        },
+        files: {
+          '<%= config.dist.styles %>style.css': '<%= config.dev.styles %>style.scss'
         }
       }
     }
 
   });
 
-  // Default task(s).
-  grunt.registerTask('style', ['sass:dist']);
+  grunt.registerTask('style', ['sass']);
 
 };
