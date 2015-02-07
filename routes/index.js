@@ -16,20 +16,17 @@ router.get('/', function(req, res, next) {
 // ~ P O S T ~   M A I L   F O R M
 
 router.post('/mail', function(req, res) {
-
-  /*
+  
   // Call Validation
   validate(req.body, function(err, data) {
     
     // Handle invalid form data
     if (err) {
-      console.log(err);
-      res.status(406);
-      return res.render('message-failure', { formData: data, error: err });
+      res.status(206);
+      return res.render('message-helpers.jade', { errors: err });
     }
-    */
-    // If form valid, set up email
-    
+
+    // If form is valid, set up email
     var email = new sendgrid.Email({
       to: 'jacobs.123@gmail.com',
       from: req.body.email,
@@ -46,8 +43,10 @@ router.post('/mail', function(req, res) {
         return res.render('message-failure', { formData: req.body, error: err });
       }
       // Render success template
+      res.status(200); 
       res.render('message-success', { messenger: req.body.name });
     });
+  });
 });
 
 module.exports = router;

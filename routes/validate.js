@@ -1,23 +1,35 @@
-module.exports = function validate(formData, cb){
+module.exports = function validate(formData, callback){
   
-  var invalid = false,
+  var err,
   
   expressions = {
     email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
   },
 
-  input = {
-    name: formData.name,
-    email: expressions.email.test(formData.email),
-    message: formData.message
-  };
-
-  for(var valid in input){
-    if(!valid){
-      invalid = true;
-      break;
+  input = [
+    {
+      name: 'name',
+      value: formData.name,
+      valid: formData.name ? true : false
+    },
+    {
+      name: 'email',
+      value: formData.email,
+      valid: expressions.email.test(formData.email)
+    },
+    {
+      name: 'message',
+      value: formData.message,
+      valid: formData.message ? true : false
     }
-  }
-  cb(invalid, formData);
+  ];
+    
+  err = input.filter(function(elem){
+    return !elem.valid;
+  });
+
+  err = err.length > 0 ? err : false;
+
+  callback(err, input);
 };
 
