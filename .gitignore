@@ -11,4 +11,4 @@ app/partials
 app/scripts/main1.js
 test
 public/images
-config.json
+app-variables.json
