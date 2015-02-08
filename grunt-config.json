@@ -5,13 +5,35 @@
 		"images": "./dev/images/"
 	},
 	"build": {
-		"styles": "./dev/.tmp/styles/",
-		"scripts": "./dev/.tmp/scripts/",
-		"images": "./dev/.tmp/images/"
+		"styles": "./dev/.build/styles/",
+		"scripts": "./dev/.build/scripts/",
+		"images": "./dev/.build/images/"
 	},
 	"dist": {
 		"styles": "./public/styles/",
 		"scripts": "./public/scripts/",
 		"images": "./public/images/"
+	},
+	"jshint": {
+		"node": true,
+	  "browser": true,
+	  "esnext": true,
+	  "bitwise": true,
+	  "camelcase": true,
+	  "curly": true,
+	  "eqeqeq": true,
+	  "immed": true,
+	  "indent": 2,
+	  "latedef": false,
+	  "newcap": true,
+	  "noarg": true,
+	  "quotmark": "single",
+	  "undef": true,
+	  "unused": true,
+	  "shadow": true,
+	  "strict": true,
+	  "trailing": true,
+	  "smarttabs": true,
+	  "jquery": true
 	}
 }

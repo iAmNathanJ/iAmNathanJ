@@ -14,19 +14,67 @@ module.exports = function(grunt) {
     // Project Settings
     config: grunt.file.readJSON('grunt-config.json'),
 
+    watch: {
+      styles: {
+        files: '<%= config.dev.styles %>*.scss',
+        tasks: ['compile', 'prefix', 'minify']
+      },
+      scripts: {
+        files: '<%= config.dev.scripts %>*.js',
+        tasks: ['lint', 'scripts']
+      }
+    },
 
     sass: {
-      dist: {
-        options: {
-        },
+      main: {
         files: {
-          '<%= config.dist.styles %>style.css': '<%= config.dev.styles %>style.scss'
+          '<%= config.build.styles %>style.css': '<%= config.dev.styles %>style.scss'
         }
       }
+    },
+
+    autoprefixer: {
+      main: {
+        src: '<%= config.build.styles %>style.css'
+      }
+    },
+
+    cssmin: {
+      options: {
+        report: 'gzip'
+      },
+      main: {
+        files: {
+          '<%= config.dist.styles %>style.css': '<%= config.build.styles %>style.css'
+        }
+      }
+    },
+
+    uglify: {
+      options: {
+        sourceMap: true,
+        mangle: false
+      },
+      all: {
+        files: {
+          '<%= config.dist.scripts %>main.min.js': '<%= config.dev.scripts %>*.js'
+        }
+      }
+    },
+
+    jshint: {
+      options: '<%= config.jshint %>',
+      all: ['<%= config.dev.scripts %>**/*.js']
     }
 
   });
 
-  grunt.registerTask('style', ['sass']);
+  grunt.registerTask('dev', ['watch']);
+  grunt.registerTask('compile', ['sass']);
+  grunt.registerTask('prefix', ['autoprefixer']);
+  grunt.registerTask('minify', ['cssmin']);
+  grunt.registerTask('lint', ['jshint']);
+  grunt.registerTask('scripts', ['uglify']);
+  grunt.registerTask('build', ['compile', 'prefix', 'minify']);
 
 };
