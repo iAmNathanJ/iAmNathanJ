@@ -13,6 +13,7 @@
   padding: 0; }
 
 body {
+  position: relative;
   margin: 0;
   font-family: 'Lato';
   font-size: 16px;
@@ -125,7 +126,8 @@ section {
   padding: 80px 0 0;
   width: 100%;
   clear: both;
-  overflow: hidden; }
+  overflow: hidden;
+  z-index: 1; }
   section.green {
     background: linear-gradient(rgba(201, 68, 197, 0.2), rgba(28, 176, 60, 0.2) 20%);
     /* Standard syntax */ }

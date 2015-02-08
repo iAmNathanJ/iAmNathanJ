@@ -5,6 +5,7 @@
   padding: 0;
 }
 body {
+  position: relative;
   margin: 0;
   font-family: 'Lato';
   font-size: 16px;
@@ -118,6 +119,7 @@ section {
   width: 100%;
   clear: both;
   overflow: hidden;
+  z-index: 1;
 
   &.green {
     // background: -webkit-linear-gradient($pink, $green 20%); /* For Safari 5.1 to 6.0 */
