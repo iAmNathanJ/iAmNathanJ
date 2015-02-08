@@ -14,17 +14,25 @@ module.exports = function(grunt) {
     // Project Settings
     config: grunt.file.readJSON('grunt-config.json'),
 
+    express: {
+      dev: {
+        options: {
+          script: './bin/www'
+        }
+      }
+    },
+
     watch: {
-      options: {
-        livereload: true
-      },
       styles: {
         files: '<%= config.dev.styles %>*.scss',
-        tasks: ['compile', 'prefix', 'minify']
+        tasks: ['compile', 'prefix', 'minify'],
+        options: {
+          livereload: true
+        }
       },
       scripts: {
         files: '<%= config.dev.scripts %>*.js',
-        tasks: ['lint', 'scripts']
+        tasks: ['lint', 'scripts', 'express:dev']
       }
     },
 
@@ -72,7 +80,7 @@ module.exports = function(grunt) {
 
   });
 
-  grunt.registerTask('dev', ['watch']);
+  grunt.registerTask('dev', ['express:dev', 'watch']);
   grunt.registerTask('compile', ['sass']);
   grunt.registerTask('prefix', ['autoprefixer']);
   grunt.registerTask('minify', ['cssmin']);
