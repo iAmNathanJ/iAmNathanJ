@@ -1,11 +1,11 @@
-'use strict';
-
 (function($){
   
+  'use strict';
+
   $(document).ready(function(){
 
     var body = $('body');
-
+    
     var mobile = function(){
       return elemWidth(body) > 768 ? false : true;
     };
@@ -225,9 +225,9 @@
 
     // A J A X
 
-    function emailFail(status, statusText){
-      return '<p>Uh oh...<br>! ' + status + ' ' + statusText + '<br>Please reload the page and try again. If this problem continues you can email me directly. Thank you.</p>';
-    }
+    // function emailFail(status, statusText){
+    //   return '<p>Uh oh...<br>! ' + status + ' ' + statusText + '<br>Please reload the page and try again. If this problem continues you can email me directly. Thank you.</p>';
+    // }
 
     function sendMail(e){
 

@@ -1,5 +1,3 @@
-'use strict';
-
 /*global jQuery */
 /*!
 * FitText.js 1.2
@@ -11,7 +9,9 @@
 * Date: Thu May 05 14:23:00 2011 -0600
 */
 
-(function( $ ){
+(function($){
+
+  'use strict';
 
   $.fn.fitText = function( kompressor, options ) {
 
@@ -42,4 +42,4 @@
 
   };
 
-})( jQuery );
+})(jQuery);
