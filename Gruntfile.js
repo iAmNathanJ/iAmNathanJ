@@ -15,6 +15,9 @@ module.exports = function(grunt) {
     config: grunt.file.readJSON('grunt-config.json'),
 
     watch: {
+      options: {
+        livereload: true
+      },
       styles: {
         files: '<%= config.dev.styles %>*.scss',
         tasks: ['compile', 'prefix', 'minify']
