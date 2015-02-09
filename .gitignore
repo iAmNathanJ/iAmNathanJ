@@ -10,5 +10,8 @@ app/stock
 app/partials
 app/scripts/main1.js
 test
+routes/users.js
+views/user.jade
+views/login.jade
 public/images
 app-variables.json
