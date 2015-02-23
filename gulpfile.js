@@ -5,7 +5,6 @@ var gulp = require('gulp')
   , uglify = require('gulp-uglify')
   , livereload = require('gulp-livereload');
 
-
 var paths = {
   css: {
     watch: './dev/styles/**/*.styl',
@@ -18,7 +17,7 @@ var paths = {
     build: './public/scripts'
   },
   img: {
-    src: './dev/images/**/*.*',
+    src: ['./dev/images/**/*.gif', './dev/images/**/*.jpg', './dev/images/**/*.jpeg', './dev/images/**/*.png', './dev/images/**/*.svg'],
     build: './public/images'
   }
 };
