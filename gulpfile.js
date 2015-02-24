@@ -22,26 +22,37 @@ var paths = {
   }
 };
 
-gulp.task('css', function(){
+gulp.task('css', function() {
   gulp.src(paths.css.src)
-    .pipe( sourcemaps.init() )
+    .pipe(sourcemaps.init())
 
-    .pipe( stylus({
-      compress: true 
+    .pipe(stylus({
+      compress: true
     }))
     
-    .pipe( autoprefixer({
+    .pipe(autoprefixer({
       browsers: ['last 2 versions'],
       cascade: false
     }))
     
-    .pipe( sourcemaps.write('.') )
-    .pipe( gulp.dest(paths.css.build) );
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(paths.css.build))
+    .pipe(livereload());
 });
 
+gulp.task('js', function() {
+  gulp.src(paths.js.src)
+    .pipe(uglify())
+    .pipe(gulp.dest(paths.js.build))
+    .pipe(livereload());
+});
 
-gulp.task('dev', function(){
-  gulp.watch(paths.css, ['css']);
+gulp.task('dev', function() {
+  livereload.listen({
+    
+  });
+  gulp.watch(paths.css.watch, ['css']);
+  gulp.watch(paths.js.watch, ['js']);
 });
 
 gulp.task('default', ['dev']);
