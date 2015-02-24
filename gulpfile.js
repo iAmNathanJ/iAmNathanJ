@@ -27,7 +27,7 @@ gulp.task('css', function() {
     .pipe(sourcemaps.init())
 
     .pipe(stylus({
-      compress: true
+      compress: false
     }))
     
     .pipe(autoprefixer({
