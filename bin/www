@@ -1,3 +1,5 @@
+require('newrelic');
+
 #!/usr/bin/env node
 
 /**
