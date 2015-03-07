@@ -9,15 +9,12 @@ app/images
 app/stock
 app/partials
 app/scripts/main1.js
-<<<<<<< HEAD
 test
 public/
 config.json
-=======
 routes/users.js
 views/user.jade
 views/login.jade
 public/images
-app-variables.json
+.app-variables.json
 dev/styles/.scss
->>>>>>> express
