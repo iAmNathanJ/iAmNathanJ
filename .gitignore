@@ -13,7 +13,6 @@ app/partials
 app/scripts/main1.js
 test
 public/
-config.json
 routes/users.js
 views/user.jade
 views/login.jade
