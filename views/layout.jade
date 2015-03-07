@@ -1,0 +1,21 @@
+doctype html
+html.no-js
+  head
+    meta(charset="utf-8")
+    title= title
+    meta(name="description" content="The humble beginnings of a burgeoning web dev.")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    link(rel='stylesheet', href='/style/style.css')
+  body
+    script
+    | document.body.style.opacity = 0;
+    
+    include nav.jade
+    include header.jade
+    include home.jade
+    include about.jade
+    include things.jade
+    include contact.jade
+    include footer.jade
+
+    // block content

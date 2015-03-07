@@ -1,0 +1,193 @@
+// @import url('http://fonts.googleapis.com/css?family=Lato:100,300,700')
+*,
+*:before,
+*:after
+  box-sizing border-box
+  margin 0
+  padding 0
+
+body
+  position relative
+  margin 0
+  font-family 'lato', helvetica, sans-serif
+  font-size 16px
+  background #eee
+  color black70
+
+h2
+  max-width 1060px
+  margin 0 auto
+  padding 0 40px
+  font-size 3rem
+  color black80
+  text-align left
+  letter-spacing 1rem
+  overflow hidden
+
+h3
+  margin 0 0 20px
+
+a
+  text-decoration none
+  color darkblue
+
+p
+  font-size 24px
+  line-height 1.4
+  max-width 640px
+  font-weight 300
+  letter-spacing 1.2
+
+.logo2
+  position fixed
+  right calc((100% - 1060px) / 2)
+  top 99px
+  margin 0
+  padding 0
+  width 200px
+  height 200px
+  perspective 500px
+  transform translateX(120px)
+  transition all 250ms ease-out
+
+  .logo-inner
+    position absolute
+    width 100%
+    height 100%
+    transform-style preserve-3d
+    transform rotateX(-30deg) rotateY(45deg) translateX(0) translateY(70px) translateZ(-100px)
+    transition transform 200ms  
+
+  img
+    position absolute
+    top 0
+    left 0
+    padding 20px
+    margin 0
+    width 100%
+    height 100%
+    background white80
+    border 1px dashed black40
+    backface-visibility hidden
+    transition transform .4s ease-out
+
+    &.one
+      transform rotateX(0)
+      background pink
+      z-index 6
+    
+    &.two
+      transform rotateX(180deg) translateZ(200px)
+      background pink
+      z-index 5
+    
+    &.three
+      transform rotateY(90deg)  translateX(100px) translateZ(100px)
+      background pink
+      z-index 4
+    
+    &.four
+      transform rotateY(-90deg) translateX(-100px) translateZ(100px)
+      background pink
+      z-index 3
+    
+    &.five
+      transform rotateX(90deg) translateY(-100px) translateZ(100px)
+      background pink
+      z-index 2
+    
+    &.six
+      transform rotateX(-90deg) translateY(100px) translateZ(100px)
+      background pink
+      z-index 1
+    
+  @media screen and (max-width 768px)
+    right 0
+    top 140px
+    position relative
+    margin 0 auto
+  
+section
+  position relative
+  display block
+  margin 0
+  padding 80px 0 0
+  width 100%
+  clear both
+  overflow hidden
+  z-index 1
+
+  &.green
+    background linear-gradient(pink, green 20%)
+  
+  &.blue
+    background linear-gradient(green, blue 20%)
+  
+  &.pink
+    background linear-gradient(yellow, pink 20%)
+  
+  &.yellow
+    background linear-gradient(blue, yellow 20%)
+  
+.content
+  position relative
+  max-width 1060px
+  margin 0 auto
+  padding 40px
+  overflow hidden
+
+  @media screen and (max-width 460px) 
+    padding 20px
+  
+.bling
+  position relative
+  display inline-block
+  padding 20px
+  float right
+  max-width 100%
+  height auto
+  text-align center
+
+  @media screen and (max-width 460px)
+    width 76%
+    margin 0 auto
+    padding 20px 0
+    display block
+    float none
+    clear both
+
+.bling img
+  max-width 100%
+  height auto
+
+.fence
+  position relative
+  width 100%
+  height 100px
+  background url(../images/fence.svg) repeat-x
+  background-size auto 100%
+  background-position center center
+
+
+@media screen and (max-width 460px)
+  h2
+    text-align center
+  
+  .bling
+    width 76%
+    margin 0 auto
+    padding 20px 0
+    display block
+    float none
+    clear both
+  
+@media screen and (max-width 320px)
+  nav a
+    padding 20px 5px
+  
+  header
+    text-align center
+  
+  header img
+    margin 0 0 -3px 0
+
