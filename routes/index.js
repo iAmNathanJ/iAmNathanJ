@@ -14,7 +14,7 @@ var router = express.Router();
 
 // ~ G E T ~   H O M E   P A G E
 
-router.get('/', function(req, res, next) {
+router.all('/', function(req, res, next) {
   res.render('index', { title: 'iAmNathanJ' });
 });
 
