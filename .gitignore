@@ -3,7 +3,9 @@ dist
 .tmp
 .sass-cache
 .DS_Store
+.app-variables.json
 bower_components
+dev/styles/.scss
 app/styles/old
 app/images
 app/stock
@@ -16,5 +18,3 @@ routes/users.js
 views/user.jade
 views/login.jade
 public/images
-.app-variables.json
-dev/styles/.scss
