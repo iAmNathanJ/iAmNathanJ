@@ -34,7 +34,6 @@ gulp.task('css', function() {
       browsers: ['last 2 versions'],
       cascade: false
     }))
-    
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(paths.css.build))
     .pipe(livereload());
