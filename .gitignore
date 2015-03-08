@@ -6,7 +6,6 @@ bower_components
 .app-variables.json
 test
 dev/styles/.scss
-public/
 routes/users.js
 views/user.jade
 views/login.jade
