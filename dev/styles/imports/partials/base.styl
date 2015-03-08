@@ -23,23 +23,28 @@ h2
   text-align left
   letter-spacing 1rem
   overflow hidden
+  
+  small
+    display block
+    font-size 1.3rem
+    font-weight 300
+    color white80
+    text-transform uppercase
+    letter-spacing 0
 
 h3
   margin 0 0 20px
-
-a
-  text-decoration none
-  color darkblue
-
+    
 p
+  margin 0 0 20px
   font-size 20px
   line-height 1.4
   max-width 640px
   font-weight 300
   letter-spacing 1.2
-
-ul
-    margin-left 40px
+  
+  @media screen and (max-width 640px)
+    width 100%
     
 .logo2
   position fixed
@@ -73,43 +78,13 @@ ul
     border 1px dashed black40
     backface-visibility hidden
     transition transform .4s ease-out
-
-    &.one
-      transform rotateX(0)
-      background pink
-      z-index 6
-    
-    &.two
-      transform rotateX(180deg) translateZ(200px)
-      background pink
-      z-index 5
-    
-    &.three
-      transform rotateY(90deg)  translateX(100px) translateZ(100px)
-      background pink
-      z-index 4
-    
-    &.four
-      transform rotateY(-90deg) translateX(-100px) translateZ(100px)
-      background pink
-      z-index 3
-    
-    &.five
-      transform rotateX(90deg) translateY(-100px) translateZ(100px)
-      background pink
-      z-index 2
-    
-    &.six
-      transform rotateX(-90deg) translateY(100px) translateZ(100px)
-      background pink
-      z-index 1
     
   @media screen and (max-width 768px)
     right 0
     top 140px
     position relative
     margin 0 auto
-  
+
 section
   position relative
   display block
@@ -131,6 +106,30 @@ section
   
   &.yellow
     background linear-gradient(blue, yellow 20%)
+
+  ul
+    margin-left 20px
+
+#things,
+#about
+  section
+    display inline-block
+    clear none
+    float left
+    padding 0
+    
+    &.left
+      width 70%
+      margin-right 2%
+      
+    &.right
+      width 28%
+      
+    @media screen and (max-width 640px)
+      display block
+      float none
+      clear both
+      min-width 100%
   
 .content
   position relative
@@ -141,27 +140,19 @@ section
 
   @media screen and (max-width 460px) 
     padding 20px
-  
-.bling
-  position relative
-  display inline-block
-  padding 20px
-  float right
-  max-width 100%
-  height auto
-  text-align center
 
-  @media screen and (max-width 460px)
-    width 76%
-    margin 0 auto
-    padding 20px 0
-    display block
-    float none
-    clear both
-
-.bling img
-  max-width 100%
-  height auto
+  a
+    text-decoration none
+    color white70
+    
+    &:hover
+      color red
+      
+    &::before
+      content "["
+    
+    &::after
+      content "]"
 
 .fence
   position relative
