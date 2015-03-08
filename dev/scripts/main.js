@@ -30,7 +30,7 @@
       nav               : getNav(),
       navLinks          : $('nav a'),
       header            : $('header'),
-      allSections       : $('section'),
+      allSections       : $(['section#home', 'section#about', 'section#things', 'section#contact']),
       about             : $('div#about'),
       projects          : $('div#project'),
       contact           : $('div#contact'),
@@ -131,7 +131,7 @@
     function setNavColors(){
       dom.allSections.each(function(i, elem){
         if(scroll.isInside($(elem), domData.navOverhang)){
-          $('nav a[href=#'+ $(elem)[0].id +']').css({'background-color': 'rgba(201, 68, 197, 0.2)'})
+          $('nav a[href="#'+ $(elem)[0].id +'"]').css({'background-color': 'rgba(201, 68, 197, 0.2)'})
             .siblings('a').css({'background-color': 'rgba(201, 68, 91, 0)'});
         }
 

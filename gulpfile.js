@@ -1,9 +1,11 @@
-var gulp = require('gulp')
-  , sourcemaps = require('gulp-sourcemaps')
-  , stylus = require('gulp-stylus')
-  , autoprefixer = require('gulp-autoprefixer')
-  , uglify = require('gulp-uglify')
-  , livereload = require('gulp-livereload');
+var gulp          = require('gulp')
+  , sourcemaps    = require('gulp-sourcemaps')
+  , rename        = require('gulp-rename')
+  , stylus        = require('gulp-stylus')
+  , autoprefixer  = require('gulp-autoprefixer')
+  , uglify        = require('gulp-uglify')
+  , concat        = require('gulp-concat')
+  , livereload    = require('gulp-livereload');
 
 var paths = {
   css: {
@@ -25,11 +27,9 @@ var paths = {
 gulp.task('css', function() {
   gulp.src(paths.css.src)
     .pipe(sourcemaps.init())
-
     .pipe(stylus({
       compress: true
     }))
-    
     .pipe(autoprefixer({
       browsers: ['last 2 versions'],
       cascade: false
@@ -42,7 +42,9 @@ gulp.task('css', function() {
 
 gulp.task('js', function() {
   gulp.src(paths.js.src)
+    .pipe(concat('main.js'))
     .pipe(uglify())
+    .pipe(rename('main.min.js'))
     .pipe(gulp.dest(paths.js.build))
     .pipe(livereload());
 });
