@@ -10,7 +10,7 @@ header
   overflow hidden
 
   @media screen and (max-width 768px)
-    height 450px
+    height 470px
   
   .header-overlay
     position absolute
@@ -73,16 +73,12 @@ header
     width 200px
     height 200px
     perspective 500px
-    transform translateX(120px)
     transition all 250ms ease-out
 
     .logo-inner
       position absolute
       width 100%
       height 100%
-      transform-style preserve-3d
-      transform rotateX(-30deg) rotateY(45deg) translateX(0) translateY(70px) translateZ(-100px)
-      transition transform 200ms
     
     img
       position absolute
@@ -92,81 +88,13 @@ header
       margin 0
       width 100%
       height 100%
-      background white80
+      background pink
       border 1px dashed black40
       backface-visibility hidden
       transition transform .4s ease-out
-
-      &.one
-        transform rotateX(0)
-        background pink
-        z-index 6
-      
-      &.two
-        transform rotateX(180deg) translateZ(200px)
-        background pink
-        z-index 5
-      
-      &.three
-        transform rotateY(90deg) translateX(100px) translateZ(100px)
-        background pink
-        z-index 4
-      
-      &.four
-        transform rotateY(-90deg) translateX(-100px) translateZ(100px)
-        background pink
-        z-index 3
-      
-      &.five
-        transform rotateX(90deg) translateY(-100px) translateZ(100px)
-        background pink
-        z-index 2
-      
-      &.six
-        transform rotateX(-90deg) translateY(100px) translateZ(100px)
-        background pink
-        z-index 1
     
     @media screen and (max-width 768px)
       right 0
-      top 140px
+      top 130px
       position relative
       margin 0 auto
-    
-  &:hover
-    .logo
-      transform translateX(0)
-    
-    .logo-inner
-      transform rotateX(0) rotateY(0) translateX(0) translateY(0) translateZ(0)
-    
-    img.one
-      transform rotateX(0)
-      background pink
-      z-index 6
-    
-    img.two
-      transform rotateX(0) translateZ(0)
-      background pink
-      z-index 5
-    
-    img.three
-      transform rotateY(0)  translateX(0) translateZ(0)
-      background pink
-      z-index 4
-    
-    img.four
-      transform rotateY(0) translateX(0) translateZ(0)
-      background pink
-      z-index 3
-    
-    img.five
-      transform rotateX(0) translateY(0) translateZ(0)
-      background pink
-      z-index 2
-    
-    img.six
-      transform rotateX(0) translateY(0) translateZ(0)
-      background pink
-      z-index 1
-    
