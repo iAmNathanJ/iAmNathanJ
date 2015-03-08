@@ -17,3 +17,4 @@ routes/users.js
 views/user.jade
 views/login.jade
 public/images
+newrelic.js
