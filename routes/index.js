@@ -2,7 +2,7 @@ var express = require('express');
 var fs = require('fs');
 var nconf = require('nconf');
 
-nconf.file('../.app-variables.json');
+nconf.file('./.app-variables.json');
 
 var sendgrid = require('sendgrid')(nconf.get('sendgrid:user'), nconf.get('sendgrid:key'));
 var validate = require('./validate.js');
@@ -49,6 +49,7 @@ router.post('/mail', function(req, res) {
       if (err) {
         res.status(206);
         console.log('Sendgrid Error', err);
+        console.log(nconf.get('sendgrid:user'), nconf.get('sendgrid:key'));
         return res.render('sendgrid-failure', { error: err });
       }
       // Render success template
