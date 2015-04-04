@@ -15,7 +15,7 @@ var paths = {
   },
   js: {
     watch: './dev/scripts/**/*.js',
-    src: './dev/scripts/**/*.js',
+    src: ['./dev/scripts/jquery.fittext.js', './dev/scripts/main.js', './dev/scripts/ga.js'],
     build: './public/scripts'
   },
   img: {
@@ -41,9 +41,9 @@ gulp.task('css', function() {
 
 gulp.task('js', function() {
   gulp.src(paths.js.src)
-    .pipe(concat('main.js'))
+    .pipe(concat('main.min.js'))
+    .pipe(gulp.dest(paths.js.build))
     .pipe(uglify())
-    .pipe(rename('main.min.js'))
     .pipe(gulp.dest(paths.js.build))
     .pipe(livereload());
 });

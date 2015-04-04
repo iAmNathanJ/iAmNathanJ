@@ -93,7 +93,7 @@
           return this.position() > bottom;
         }
       };
-    }());
+    })();
 
 
 
@@ -139,14 +139,15 @@
     }
 
     function scrollToggleNav(){
-      if(scroll.direction() !== scroll.prevDirection && !mobile()) {
-        if(scroll.direction() === 'down'){
+      var dir = scroll.direction();
+      if(dir !== scroll.prevDirection && !mobile()){
+        if(dir === 'down'){
           hideNav();
         }else{
           showNav();
         }
       }
-      scroll.prevDirection = scroll.direction();
+      scroll.prevDirection = dir;
       scroll.prevPosition = scroll.position(); // Update last scroll position to equal new scroll position
     }
 
@@ -204,9 +205,11 @@
       if(scroll.newPosition()){
         window.requestAnimationFrame(function(){
           handle.windowScroll();
+          updateScrolling();
         });
+      }else{
+        setTimeout(updateScrolling, 17);
       }
-      setTimeout(updateScrolling, 17);
     })();
 
 
