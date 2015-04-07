@@ -12,9 +12,12 @@ section#contact.green
       #form-messages.form-messages
       form#contact-form(action="mail" novalidate)
         .row
+          label(for="name") Name
           input#name(type="text" name="name" placeholder="*Name")
+          label(for="email") Email
           input#email(type="email" name="email" placeholder="*Email")
         .row
+          label(for="message") Message
           textarea#message(name="message" placeholder="*What's Up?" rows="1" cols="1")
           br
         .row

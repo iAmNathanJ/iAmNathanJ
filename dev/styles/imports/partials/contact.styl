@@ -13,6 +13,27 @@
     align-items stretch
     align-content space-between
     max-width 100%
+  
+  label
+    position absolute
+    top -9999px
+    left -9999px
+    visibility hidden
+
+  input,
+  textarea
+    
+    &::-webkit-input-placeholder
+      color black50
+
+    &:-moz-placeholder
+      color black50
+
+    &::-moz-placeholder
+      color black50
+
+    &:-ms-input-placeholder
+     color black50
 
   button,
   textarea,
