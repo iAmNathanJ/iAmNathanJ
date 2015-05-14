@@ -24,6 +24,14 @@ h2
   text-align left
   letter-spacing 1rem
   overflow hidden
+  opacity 0
+  transform translateX(-20px)
+  transition opacity .2s ease-out, transform .2s ease-out
+  
+  &.active
+    opacity 1
+    transform translateX(0)
+    
   
   small
     display block
