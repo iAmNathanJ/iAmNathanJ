@@ -284,7 +284,7 @@
         url: 'partials/metro.json',
 
         error: function(response){
-          console.log(response);
+          console.error(response);
         },
         success: function(response){
           var images = response.images;
