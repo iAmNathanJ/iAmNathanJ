@@ -22,17 +22,16 @@ h2
   font-size 3rem
   color black80
   text-align left
-  letter-spacing 1rem
   overflow hidden
   opacity 0
   transform translateX(-20px)
   transition opacity .2s ease-out, transform .2s ease-out
-  
+
   &.active
     opacity 1
     transform translateX(0)
-    
-  
+
+
   small
     display block
     font-size 1.3rem
@@ -43,18 +42,18 @@ h2
 
 h3
   margin 0 0 10px
-    
+
 p
   margin 0 0 20px
   font-size 20px
-  line-height 1.4
+  line-height 1.6
   // max-width 640px
   font-weight 300
   letter-spacing 1.2
-  
+
   @media screen and (max-width 640px)
     width 100%
-    
+
 .logo2
   position fixed
   right calc((100% - 1060px) / 2)
@@ -73,7 +72,7 @@ p
     height 100%
     transform-style preserve-3d
     transform rotateX(-30deg) rotateY(45deg) translateX(0) translateY(70px) translateZ(-100px)
-    transition transform 200ms  
+    transition transform 200ms
 
   img
     position absolute
@@ -87,7 +86,7 @@ p
     border 1px dashed black40
     backface-visibility hidden
     transition transform .4s ease-out
-    
+
   @media screen and (max-width 768px)
     right 0
     top 140px
@@ -106,13 +105,13 @@ section
 
   &.green
     background linear-gradient(pink, green 20%)
-  
+
   &.blue
     background linear-gradient(green, blue 20%)
-  
+
   &.pink
     background linear-gradient(yellow, pink 20%)
-  
+
   &.yellow
     background linear-gradient(blue, yellow 20%)
 
@@ -127,23 +126,23 @@ section
     float left
     padding 0
     @extend .cf
-    
+
     &.right
       width 100%
 
     &.left
       width 67%
       margin-right 5%
-      
+
     &.right
       width 28%
-      
+
     @media screen and (max-width 640px)
       display block
       float none
       clear both
       min-width 100%
-  
+
 .content
   position relative
   max-width 1060px
@@ -151,14 +150,14 @@ section
   padding 40px
   overflow hidden
 
-  @media screen and (max-width 460px) 
+  @media screen and (max-width 460px)
     padding 20px
 
   a
     color white90
     text-decoration none
     font-weight 700
-    
+
     &:hover
       color red
 
@@ -173,8 +172,8 @@ section
 
 @media screen and (max-width 460px)
   h2
-    text-align center
-  
+    padding 0 20px
+
   .bling
     width 76%
     margin 0 auto
@@ -182,14 +181,13 @@ section
     display block
     float none
     clear both
-  
+
 @media screen and (max-width 320px)
   nav a
     padding 20px 5px
-  
+
   header
     text-align center
-  
+
   header img
     margin 0 0 -3px 0
-

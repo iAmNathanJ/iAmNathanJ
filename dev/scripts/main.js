@@ -1,11 +1,11 @@
 (function($){
-  
+
   'use strict';
 
   $(document).ready(function(){
 
     var body = $('body');
-    
+
     var mobile = function(){
       return elemWidth(body) > 768 ? false : true;
     };
@@ -13,7 +13,7 @@
     var elemWidth = function(elem){
       return elem.width();
     };
-    
+
     var getNav = function(){
       return mobile() ?  $('nav#mobile-nav') : $('nav#standard-nav');
     };
@@ -46,14 +46,14 @@
       projectClose      : $('div.close-button'),
       contactForm       : $('form#contact-form')
     };
-    
+
     var domData = {
       navOverhang: mobile() ? document.getElementById('menu').clientHeight : 10,
       headerHeight: dom.header.height()
     };
 
     var scroll = (function(){
-      
+
       return {
         prevPosition: dom.bod.scrollTop() || dom.html.scrollTop(),
 
@@ -64,7 +64,7 @@
         position: function(){
           return this.getPosition() < 0 ? 0 : this.getPosition(); // Prevent negative scroll positions for bouncy browsers (osx safari, etc)
         },
-        
+
         newPosition: function(){
           return this.position() !== this.prevPosition;
         },
@@ -83,12 +83,12 @@
           // return ( this.position() >= (elem.offset().top - dom.nav.height()) && this.position() < (elem.offset().top + elem.height()) ) ? true : false;
           return ( this.position() >= (elem.offset().top - offset) && this.position() < (elem.offset().top + elem.height()) ) ? true : false;
         },
-        
-        isAbove: function(elem){ 
+
+        isAbove: function(elem){
           var top = elem.offset().top;
           return this.position() < top;
         },
-        
+
         isBelow: function(elem){
           var bottom = elem.offset().top + elem.height();
           return this.position() > bottom;
@@ -102,7 +102,7 @@
 
     dom.bod.animate({opacity: 1});
     $('nav a[href=#home]').addClass('active');
-    $('h2').fitText(1, {maxFontSize: '48px'});
+    $('h2').fitText(1, {maxFontSize: '28px'});
 
 
 
@@ -123,12 +123,12 @@
         hideNav();
       }
     }
-    
+
     function goTo(section){
       dom.htmlBody.animate({scrollTop: $(section).offset().top}); //This selects 'html, body' for IE page navigation.
       if(mobile()){ hideNav(); }
     }
-      
+
     function setNavColors(){
       dom.allSections.each(function(i, elem){
         if(scroll.isInside($(elem), domData.navOverhang)){
@@ -246,7 +246,7 @@
 
       e.preventDefault();
       goTo('#contact');
-      
+
       $.ajax({
 
         type: 'post',
@@ -257,10 +257,10 @@
           $('div#form-messages').html(response);
         },
         success: function(response, textStatus, xhr){
-          
+
           // '/mail' route will send a status code of 206 if further validation is required.
           // otherwise get rid of the form
-          
+
           if(xhr.status === 200) {
             dom.contactForm.hide();
           }
@@ -269,15 +269,15 @@
 
       });
     }
-    
+
     dom.contactForm.on('submit', function(e){
       sendMail(e);
     });
 
     function getProjectImages(e){
-      
+
       e.preventDefault();
-      
+
       $.ajax({
 
         type: 'get',
@@ -289,9 +289,9 @@
         success: function(response){
           var images = response.images;
           $('div.project-view div.img-container').html('<img src="' + images[0] + '" alt="">');
-        }     
+        }
       });
-    
+
     }
 
   });
