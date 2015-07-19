@@ -14,8 +14,12 @@ var router = express.Router();
 
 // ~ G E T ~   H O M E   P A G E
 
-router.all('/', function(req, res, next) {
+router.get('/', function(req, res, next) {
   res.render('index', { title: 'iAmNathanJ' });
+});
+
+router.get(/[\w\W\s]/, function(req, res, next) {
+  res.redirect('/');
 });
 
 
@@ -26,7 +30,7 @@ router.post('/mail', function(req, res) {
 
   // Call Validation
   validate(req.body, function(err, data) {
-    
+
     // Handle invalid form data
     if (err) {
       res.status(206);
@@ -41,10 +45,10 @@ router.post('/mail', function(req, res) {
       subject: nconf.get('contact:subject'),
       text: req.body.message
     });
-    
+
     // Send email
     sendgrid.send(email, function(err, json) {
-      
+
       // Render failure template on sendgrid error
       if (err) {
         res.status(206);
