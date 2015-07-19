@@ -12,7 +12,7 @@ var router = express.Router();
 
 
 
-// ~ G E T ~   H O M E   P A G E
+// ~ G E T
 
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'iAmNathanJ' });
