@@ -1,79 +1,88 @@
 header
   position relative
+  padding 59px 0 0
   width 100%
-  height 350px
-  margin 0
-  padding 0
-  background url('../images/header-back.jpg') center right
+  min-height 100%
+  background url('../images/header-back-lg.jpg') center right
   background-position center center
   background-size cover
   overflow hidden
 
-  @media screen and (max-width 768px)
-    height 470px
-
-  .header-overlay
+  .content
     position absolute
-    top 0
-    right 0
-    bottom 0
-    left 0
-    background black30
+    width contentWidth
+    max-width 100%
+    left 50%
+    top 50%
+    transform translateX(-50%) translateY(-75%)
 
-  .header-parallax
-    position absolute
-    top 0
-    right 0
-    bottom 0
-    left 0
+    @media all and (max-width: 640px)
+      top 0
+      transform translateX(-50%) translateY(0)
 
-  .header-parallax-content
+  .header-container
     position relative
-    max-width 1060px
     height 100%
-    margin 0 auto
-    padding 0 0 40px
-    overflow visible
+    overflow hidden
+
+    p
+      margin-top 140px
+      color white
+
+      @media all and (max-width: 480px)
+        margin-top 0
 
   h1
     position absolute
-    top 174px
-    left 40px
     width 100%
+    top 40px
     font-size 3rem
     font-weight 700
     letter-spacing -0.2rem
+    line-height 1
     text-align left
     text-transform uppercase
     color white80
     transition all 250ms ease-out
     overflow hidden
 
-    small
-      display block
-      font-size 1.3rem
-      font-weight 300
-      color white80
-      text-transform uppercase
-      letter-spacing 0
-
-    @media screen and (max-width 768px)
-      text-align center
+    @media all and (max-width: 640px)
+      font-size 2rem
+      text-align left
       left 0
       top 99px
       position relative
       margin 0 auto
 
+    @media all and (max-width: 480px)
+      text-align center
+
+    small
+      display block
+      font-size 1.3rem
+      font-weight 300
+      // color white80
+      color red
+      text-transform uppercase
+      letter-spacing 0
+
+      @media all and (max-width: 480px)
+        font-size 1.1rem
+
+
   .logo
-    position absolute
-    right 40px
-    top 99px
-    margin 0
-    padding 0
+    position relative
+    float right
+    margin-top 30px
     width 200px
     height 200px
     perspective 500px
     transition all 250ms ease-out
+
+    @media all and (max-width: 480px)
+      float none
+      margin 0 auto
+      top 100px
 
     .logo-inner
       position absolute
@@ -84,17 +93,7 @@ header
       position absolute
       top 0
       left 0
-      padding 20px
       margin 0
       width 100%
       height 100%
-      background pink
-      border 1px dashed black40
-      backface-visibility hidden
       transition transform .4s ease-out
-
-    @media screen and (max-width 768px)
-      right 0
-      top 130px
-      position relative
-      margin 0 auto

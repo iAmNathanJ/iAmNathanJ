@@ -8,12 +8,12 @@ nav
   transition all 250ms ease-out
 
   .nav-inner
-    max-width 1060px
+    max-width contentWidth
     margin 0 auto
     padding 0 40px
-  
+
   a.active
-    background-color pink
+    background-color red
 
   a
     position relative
@@ -31,9 +31,9 @@ nav
     padding 0
     text-align left
 
-    a 
-      display inline-block 
-  
+    a
+      display inline-block
+
   &#mobile-nav
     display none
     padding 0
@@ -43,17 +43,16 @@ nav
     a
       display block
       padding-right 12%
-      
+
       &#menu
         font-size 14px
         font-weight 300
         line-height 20px
 
 @media screen and (max-width 768px)
-  
+
   nav#standard-nav
-    display none 
-  
+    display none
+
   nav#mobile-nav
-    display block 
-    
+    display block

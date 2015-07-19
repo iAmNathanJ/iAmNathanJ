@@ -18,7 +18,16 @@
       return mobile() ?  $('nav#mobile-nav') : $('nav#standard-nav');
     };
 
+    // C O L O R S
 
+    var color = {
+      red: 'rgba(201, 68, 91, 0.6)',
+      green: 'rgba(28, 176, 60, 0.2)',
+      blue: 'rgba(28, 127, 176, 0.2)',
+      darkblue: 'rgba(28, 127, 176, 0.6)',
+      yellow: 'rgba(201, 184, 68, 0.2)',
+      pink: 'rgba(201, 68, 197, 0.2)'
+    };
 
     // D O M   R E F E R E N C E
 
@@ -30,7 +39,7 @@
       nav               : getNav(),
       navLinks          : $('nav a'),
       header            : $('header'),
-      allSections       : $(['section#home', 'section#about', 'section#things', 'section#contact']),
+      allSections       : $(['header#home','section#about', 'section#things', 'section#contact']),
       about             : $('div#about'),
       projects          : $('div#project'),
       contact           : $('div#contact'),

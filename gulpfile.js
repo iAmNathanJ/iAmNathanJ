@@ -42,7 +42,6 @@ gulp.task('css', function() {
 gulp.task('js', function() {
   gulp.src(paths.js.src)
     .pipe(concat('main.min.js'))
-    .pipe(gulp.dest(paths.js.build))
     .pipe(uglify())
     .pipe(gulp.dest(paths.js.build))
     .pipe(livereload());
@@ -50,7 +49,7 @@ gulp.task('js', function() {
 
 gulp.task('dev', function() {
   livereload.listen({
-    
+
   });
   gulp.watch(paths.css.watch, ['css']);
   gulp.watch(paths.js.watch, ['js']);

@@ -7,6 +7,10 @@
   margin 0
   padding 0
 
+html,
+body
+  height 100%
+
 body
   position relative
   margin 0
@@ -16,17 +20,33 @@ body
   color black70
 
 h2
-  max-width 1060px
-  margin 0 auto
-  padding 0 40px
+  max-width contentWidth
+  margin 0 auto 20px
+  padding-bottom 10px
   font-size 3rem
-  color black80
   text-align left
   overflow hidden
   opacity 0
   will-change transform
   transform translateX(-20px)
   transition opacity .2s ease-out, transform .2s ease-out
+
+  &.color-dark
+    color black80
+  &.color-light
+    color #efefef
+  &.color-red
+    color red
+  &.color-blue
+    color darkblue
+  &.border-dark
+    border-bottom 2px solid black80
+  &.border-light
+    border-bottom 2px solid #efefef
+  &.border-blue
+    border-bottom 2px solid darkblue
+  &.border-red
+    border-bottom 2px solid red
 
   &.active
     opacity 1
@@ -48,32 +68,10 @@ p
   margin 0 0 20px
   font-size 20px
   line-height 1.6
-  // max-width 640px
   font-weight 300
-  letter-spacing 1.2
 
   @media screen and (max-width 640px)
     width 100%
-
-.logo2
-  position fixed
-  right calc((100% - 1060px) / 2)
-  top 99px
-  margin 0
-  padding 0
-  width 200px
-  height 200px
-  perspective 500px
-  transform translateX(120px)
-  transition all 250ms ease-out
-
-  .logo-inner
-    position absolute
-    width 100%
-    height 100%
-    transform-style preserve-3d
-    transform rotateX(-30deg) rotateY(45deg) translateX(0) translateY(70px) translateZ(-100px)
-    transition transform 200ms
 
   img
     position absolute
@@ -90,9 +88,9 @@ p
 
   @media screen and (max-width 768px)
     right 0
-    top 140px
+    // top 140px
     position relative
-    margin 0 auto
+    margin 0 auto 20px
 
 section
   position relative
@@ -104,17 +102,14 @@ section
   overflow hidden
   z-index 1
 
-  &.green
-    background linear-gradient(pink, green 20%)
-
-  &.blue
-    background linear-gradient(green, blue 20%)
-
-  &.pink
-    background linear-gradient(yellow, pink 20%)
-
-  &.yellow
-    background linear-gradient(blue, yellow 20%)
+  &.contact
+    background linear-gradient(blue, #efefef)
+    padding-bottom 40px
+  &.things
+    background linear-gradient(#efefef, blueSolid 20%)
+  &.about
+    background #efefef
+    box-shadow 0 -10px 10px -8px #333
 
   ul
     margin-left 20px
@@ -129,7 +124,8 @@ section
     @extend .cf
 
     &.right
-      width 100%
+      // width 100%
+      // background black70
 
     &.left
       width 67%
@@ -146,9 +142,9 @@ section
 
 .content
   position relative
-  max-width 1060px
+  max-width contentWidth
   margin 0 auto
-  padding 40px
+  padding 0 40px
   overflow hidden
 
   @media screen and (max-width 460px)
@@ -170,10 +166,7 @@ section
   background-size auto 100%
   background-position center center
 
-
 @media screen and (max-width 460px)
-  h2
-    padding 0 20px
 
   .bling
     width 76%
