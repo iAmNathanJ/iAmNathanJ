@@ -149,7 +149,7 @@
 
     function revealHeadings(){
       dom.allSections.each(function(i, elem){
-        if(scroll.isInside($(elem), 300)){
+        if(scroll.isInside($(elem), dom.win.height()-300)){
           $(this).find('h2').addClass('active')
             .parent().siblings().find('h2').removeClass('active');
         }
@@ -246,10 +246,6 @@
 
 
     // A J A X
-
-    // function emailFail(status, statusText){
-    //   return '<p>Uh oh...<br>! ' + status + ' ' + statusText + '<br>Please reload the page and try again. If this problem continues you can email me directly. Thank you.</p>';
-    // }
 
     function sendMail(e){
 
