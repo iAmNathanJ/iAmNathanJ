@@ -1,12 +1,13 @@
-var express = require('express');
-var fs = require('fs');
-var nconf = require('nconf');
+var fs = require('fs')
+  , http = require('http')
+  , nconf = require('nconf')
+  , express = require('express')
+  , router = express.Router();
 
 nconf.file('./.app-variables.json');
 
 var sendgrid = require('sendgrid')(nconf.get('sendgrid:user'), nconf.get('sendgrid:key'));
 var validate = require('./validate.js');
-var router = express.Router();
 
 
 // ~ G E T
@@ -17,6 +18,24 @@ router.get('/', function(req, res, next) {
 
 router.get('/blog', function(req, res, next) {
   res.redirect('http://blog.iamnathanj.com');
+});
+
+router.get('/feed', function(req, res, next) {
+
+  var options = {
+    host: 'blog.iamnathanj.com',
+    port: 80,
+    path: '/feed.xml'
+  };
+
+  http.get(options, function(feed) {
+    console.log(feed);
+    res.render('index');
+  }).on('error', function(e) {
+    console.log("Got error: " + e.message);
+  });
+
+
 });
 
 router.get(/[\w\W\s]/, function(req, res, next) {
