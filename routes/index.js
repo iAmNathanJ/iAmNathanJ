@@ -6,16 +6,17 @@ nconf.file('./.app-variables.json');
 
 var sendgrid = require('sendgrid')(nconf.get('sendgrid:user'), nconf.get('sendgrid:key'));
 var validate = require('./validate.js');
-
 var router = express.Router();
-
-
 
 
 // ~ G E T
 
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'iAmNathanJ' });
+});
+
+router.get('/blog', function(req, res, next) {
+  res.redirect('/');
 });
 
 router.get(/[\w\W\s]/, function(req, res, next) {

@@ -1,0 +1,21 @@
+{
+  "blogTitle": "IamNathanJ",
+  "entries": [
+    {
+      "title": "First Post",
+      "file": "marked.md",
+      "creation": "234234234",
+      "revised": null,
+      "permalink": null,
+      "comments": []
+    },
+    {
+      "title": "Second Post",
+      "file": "marked.md",
+      "creation": "234234234",
+      "revised": null,
+      "permalink": "http://iamnathanj.com/blog/second-post",
+      "comments": []
+    }
+  ]
+}
