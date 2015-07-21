@@ -16,7 +16,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/blog', function(req, res, next) {
-  res.redirect('/');
+  res.redirect('http://blog.iamnathanj.com');
 });
 
 router.get(/[\w\W\s]/, function(req, res, next) {
