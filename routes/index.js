@@ -1,6 +1,8 @@
 var fs = require('fs')
   , http = require('http')
   , nconf = require('nconf')
+  , request = require('request')
+  , parseString = require('xml2js').parseString
   , express = require('express')
   , router = express.Router();
 
@@ -13,8 +15,6 @@ var validate = require('./validate.js');
 // ~ G E T
 
 router.get('/', function(req, res, next) {
-  var request = require('request')
-    , parseString = require('xml2js').parseString;
 
   request('http://blog.iamnathanj.com/feed.xml', function(err, head, body) {
     if(!err) {
