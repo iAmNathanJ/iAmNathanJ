@@ -13,7 +13,28 @@ var validate = require('./validate.js');
 // ~ G E T
 
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'iAmNathanJ' });
+  var request = require('request')
+    , parseString = require('xml2js').parseString;
+
+  request('http://blog.iamnathanj.com/feed.xml', function(err, head, body) {
+    if(!err) {
+      var posts = [];
+      parseString(body, function(err, result) {
+        var entries = result.rss.channel[0].item;
+        for(var i = 0; i < entries.length; i++) {
+          posts.push({
+            title: entries[i].title,
+            subtitle: entries[i].subtitle,
+            excerpt: entries[i].excerpt,
+            month: entries[i].dateMonth,
+            day: entries[i].dateDay,
+            link: entries[i].link
+          });
+        }
+      });
+      res.render('index', { title: 'iAmNathanJ', posts: posts });
+    }
+  });
 });
 
 router.get('/blog', function(req, res, next) {
@@ -21,21 +42,7 @@ router.get('/blog', function(req, res, next) {
 });
 
 router.get('/feed', function(req, res, next) {
-
-  var options = {
-    host: 'blog.iamnathanj.com',
-    port: 80,
-    path: '/feed.xml'
-  };
-
-  http.get(options, function(feed) {
-    console.log(feed);
-    res.render('index');
-  }).on('error', function(e) {
-    console.log("Got error: " + e.message);
-  });
-
-
+  res.redirect('http://blog.iamnathanj.com/feed.xml');
 });
 
 router.get(/[\w\W\s]/, function(req, res, next) {
