@@ -15,10 +15,6 @@ html.no-js(lang="en")
     
     include nav.jade
     include header.jade
-    section
-      for entry in entries
-        h1
-          a(href="#{entry.path}") #{entry.title}
     include about.jade
     include things.jade
     include contact.jade

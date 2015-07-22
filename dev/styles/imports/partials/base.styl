@@ -64,6 +64,10 @@ h2
 h3
   margin 0 0 10px
 
+a
+  text-decoration none
+  color: black70
+
 p
   margin 0 0 20px
   font-size 20px
@@ -114,32 +118,6 @@ section
   ul
     margin-left 20px
 
-#things,
-#about
-  section
-    display inline-block
-    clear none
-    float left
-    padding 0
-    @extend .cf
-
-    &.right
-      // width 100%
-      // background black70
-
-    &.left
-      width 67%
-      margin-right 5%
-
-    &.right
-      width 28%
-
-    @media screen and (max-width 640px)
-      display block
-      float none
-      clear both
-      min-width 100%
-
 .content
   position relative
   max-width contentWidth
@@ -152,11 +130,12 @@ section
 
   a
     color white90
-    text-decoration none
-    font-weight 700
-
-    &:hover
+    &:visited color white90
+    &:hover,
+    &:focus,
+    &:active
       color red
+
 
 .fence
   position relative

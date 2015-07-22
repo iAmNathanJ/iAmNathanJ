@@ -9,15 +9,28 @@ section#things.things
     h2.color-red.border-light THINGS
 
     section.left
-      h3 Current Things<br><small><time datetime="2015-04-05 21:54">April 5, 2015</time></small>
-      p
-        | I won't be posting any past work here. I'll begin building out my new portfolio as soon as I finish my current client project. You can use this website as an example of my work and check out the source on #[a(href="https://github.com/iAmNathanJ/iAmNathanJ") GitHub] for now. I also suggest checking out my #[a(href="http://codepen.io/iAmNathanJ/") Codepen] profile to see some recent design and code examples. In fact, I've spent so much time on Codepen recently that I decided to write a #[a(href="https://github.com/iAmNathanJ/generator-codepen") generator] to help me develop little bursts of inspiration faster, locally on my machine. This has been a fun exercise though it's still not quite done. I should finish it up as time permits over the next few weeks. And I'll share what I've learned about the generator authoring process as soon as I can.<br><br>
-
-        | If you're reading this, you're probably already familiar with #[a(href="http://yeoman.io") Yeoman]. If not, you'd be wise to check it out immediately.
-
-      h3 Rambling Things<br><small>(My thoughts, for what they're worth)</small>
-      p
-        | I'll work on adding some content to this section soon. This will likely turn into a full-fledged blog. I have a lot to say about what I've learned over the last half year, and I'm looking forward to learning more and sharing all the good stuff as I go.
+      h3 Recent Blog Posts
+      for post in posts
+        a(href="#{post.link}")
+          .blog-listing
+            .blog-title #{post.title}<br>
+            .blog-subtitle #{post.subtitle}
+            .blog-date 
+              .month #{post.month}
+              .day #{post.day}
+      
+      hr        
+      h3 Recent Work
+        p
+          a(href="http://naturespointe.com") Nature's Pointe Cabins<br>
+          a(href="#") Norris Lake Adventures <small>(Coming Soon)</small>
+      
+      hr      
+      h3 Codepen
+        p
+          a(href="http://codepen.io/iAmNathanJ/pen/pvLQJY") CSS Prallax<br>
+          a(href="http://codepen.io/iAmNathanJ/pen/pvprQZ") Flex Form<br>
+          a(href="http://codepen.io/iAmNathanJ/pen/yyvmOM") B. Social<br>
 
     section.right
       h3 Resource Things<br><small>(Smart people and places to learn really important stuff)</small>
