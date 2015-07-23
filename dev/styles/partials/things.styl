@@ -30,7 +30,7 @@ a.portfolio-link
 
   &,
   &:visited
-    color white90
+    color darkblue
 
   &:hover,
   &:active,
@@ -47,3 +47,34 @@ a.resource-link
   &:active,
   &:focus
     color darkred
+
+.panel
+  padding 20px
+  border-radius 6px 0 0 6px
+  border-left 2px solid white90
+
+  &.blue
+    background linear-gradient(90deg, panelBlueLight 50%, transparent)
+
+  h3
+    position relative
+    color red
+
+    &:before
+      content ""
+      position absolute
+      top 50%
+      left 0
+      border-top 2px solid black10
+      width 100%
+      height 1px
+      z-index 0
+
+    span
+      position relative
+      padding-right 10px
+      background panelBlueLight
+      z-index 1
+
+  p
+    line-height 1
