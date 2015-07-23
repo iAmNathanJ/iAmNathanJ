@@ -55,4 +55,4 @@ gulp.task('dev', function() {
   gulp.watch(paths.js.watch, ['js']);
 });
 
-gulp.task('default', ['dev']);
+gulp.task('default', ['css', 'dev']);
