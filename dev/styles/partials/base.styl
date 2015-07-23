@@ -62,9 +62,19 @@ h2
 h3
   margin 0 0 10px
 
-a
+a,
+a:visited
   text-decoration none
-  color: black70
+  font-weight 400
+  color darkred
+
+a
+  &:hover,
+  &:active,
+  &:focus
+    color darkblue
+
+
 
 p
   margin 0 0 20px
@@ -126,29 +136,14 @@ section
   @media screen and (max-width 460px)
     padding 20px
 
-  a
+  a,
+  &:visited
     color white90
-    font-weight 400
-    &:visited color white90
+
     &:hover,
-    &:focus,
-    &:active
+    &:active,
+    &:focus
       color red
-
-  article,
-  .rss-subscribe
-    margin-bottom 150px
-
-    a,
-    a:visited
-      color darkred
-      font-weight 400
-
-    a
-      &:hover,
-      &:active,
-      &:focus
-        color darkblue
 
 .fence
   position relative
