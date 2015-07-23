@@ -26,67 +26,24 @@
         padding 0
         border 0
 
-.blog-listing
-  position relative
-  margin-bottom 12px
-  padding 12px 0
-  border-top 1px solid white30
-  border-bottom 1px solid white30
-  overflow hidden
-  white-space nowrap
-  transition background, border .2s ease-out
+a.portfolio-link
 
-  &:hover
-    background white20
-    border-left 3px solid red
-    cursor pointer
+  &,
+  &:visited
+    color white90
 
-    .blog-title
-      transform translateX(16px)
-
-    .blog-subtitle
-      transform translateX(16px)
-
-.blog-title
-  font-size 1.4rem
-  transition all .2s ease-out
-  will-change transform
-
-.blog-subtitle
-  font-size 1rem
-  color black80
-  transition all .2s ease-out
-  will-change transform
-
-.blog-date
-  position absolute
-  padding 2px 10px
-  right 0
-  top 0
-  height 100%
-  font-weight 700
-  background darkred
-
-  .month
-    position relative
-    font-size 1.7rem
-    letter-spacing -0.1rem
-    text-transform uppercase
+  &:hover,
+  &:active,
+  &:focus
     color darkblue
-    z-index 2
 
-  .day
-    position relative
-    margin-top -16px
-    font-size 2.5rem
-    letter-spacing -0.3rem
-    text-transform uppercase
-    color white80
-    z-index 1
+a.resource-link
 
-hr
-  margin 2rem 0 1.25rem
-  height .25rem
-  border 0
-  outline 0
-  background blue
+  &,
+  &:visited
+    color darkblue
+
+  &:hover,
+  &:active,
+  &:focus
+    color darkred
