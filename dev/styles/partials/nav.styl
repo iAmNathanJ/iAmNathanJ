@@ -23,7 +23,7 @@ nav
     text-decoration none
     text-transform uppercase
 
-    &,
+    &
     &:visited
       color #ccc
 
@@ -44,7 +44,13 @@ nav
     display none
     padding 0
     text-align right
-    top -236px
+    // top -236px
+    transform translateY(-236px)
+    will-change transform
+    transition transform .3s ease-out
+
+    &.down
+      transform translateY(0)
 
     a
       display block

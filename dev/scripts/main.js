@@ -35,7 +35,7 @@
       win               : $(window),
       html              : $('html'),
       bod               : $('body'),
-      htmlBody          : $('html, body'), // Necessary for IE - see goTo()
+      htmlBody          : $('html, body'), // Necessary for IE scrolling
       nav               : getNav(),
       navLinks          : $('nav a'),
       header            : $('header'),
@@ -88,11 +88,13 @@
           return this.direction() !== this.prevDirection;
         },
 
-        isInside: function(elem, offset){ // elem must be jquery object
-          // return ( this.position() >= (elem.offset().top - dom.nav.height()) && this.position() < (elem.offset().top + elem.height()) ) ? true : false;
-          return ( this.position() >= (elem.offset().top - offset) && this.position() < (elem.offset().top + elem.height()) ) ? true : false;
-        },
+        isInside: function($elem, topAdjust, bottomAdjust) {
+          var currentLocation = this.position()
+            , top = $elem.offset().top + (topAdjust || 0)
+            , bottom = $elem.offset().top + $elem.height() +  (bottomAdjust || 0);
 
+          return ( currentLocation >= top && currentLocation < bottom ) ? true : false;
+        },
         isAbove: function(elem){
           var top = elem.offset().top;
           return this.position() < top;
@@ -110,37 +112,38 @@
     // P A G E   S E T U P
 
     dom.bod.animate({opacity: 1});
-    $('nav a[href=#home]').addClass('active');
+    setNavColors();
     $('h2').fitText(1, {maxFontSize: '28px'});
 
 
 
     // D O M   M A N I P U L A T I O N
 
-    function hideNav(){
-      dom.nav.css({top: (-dom.nav.height() + domData.navOverhang)});
+    function hideNav() {
+      dom.nav.removeClass('down');
     }
 
     function showNav(){
-      dom.nav.css({top: 0});
+      dom.nav.addClass('down');
     }
 
     function toggleNav(){
-      if(parseInt(dom.nav.css('top')) < 0){
-        showNav();
-      }else{
-        hideNav();
-      }
+      dom.nav.toggleClass('down');
     }
 
-    function goTo(section){
-      dom.htmlBody.animate({scrollTop: $(section).offset().top}); //This selects 'html, body' for IE page navigation.
+    function goTo(caller){
+      var section = $(caller).attr('href');
+      dom.htmlBody.stop().animate({
+        scrollTop: $(section).offset().top
+      }, 700, function() {
+        window.location.hash = caller.hash;
+      });
       if(mobile()){ hideNav(); }
     }
 
     function setNavColors(){
       dom.allSections.each(function(i, elem){
-        if(scroll.isInside($(elem), domData.navOverhang)){
+        if(scroll.isInside($(elem), -domData.navOverhang)){
           $('nav a[href="#'+ $(elem)[0].id +'"]').addClass('active')
             .siblings('a').removeClass('active');
         }
@@ -149,7 +152,7 @@
 
     function revealHeadings(){
       dom.allSections.each(function(i, elem){
-        if(scroll.isInside($(elem), dom.win.height()-300)){
+        if(scroll.isInside($(elem), -dom.win.height()-300)){
           $(this).find('h2').addClass('active')
             .parent().siblings().find('h2').removeClass('active');
         }
@@ -184,18 +187,17 @@
         setNavColors();
         revealHeadings();
       },
-      bodyClick: function(){
+      bodyClick: function(e){
+        e.stopPropagation();
         if(mobile()){
-          if(parseInt(dom.nav.css('top')) > -dom.nav.find('a').height()){
-            hideNav();
-          }
+          hideNav();
         }
       },
       navClick: function(e){
         e.preventDefault();
-        var self = $(this);
+        e.stopPropagation();
         if(this.id !== 'menu'){
-          goTo(self.attr('href'));
+          goTo(this);
         }else{
           toggleNav();
         }
