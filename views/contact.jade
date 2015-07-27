@@ -10,7 +10,7 @@ section#contact.contact
 
     .form-container
       #form-messages.form-messages
-      form#contact-form(action="mail" novalidate)
+      form#contact-form(action="mail" data-href="#contact" novalidate)
         .row
           label(for="name") Name
           input#name(type="text" name="name" placeholder="*Name")

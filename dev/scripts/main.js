@@ -132,7 +132,7 @@
     }
 
     function goTo(caller){
-      var section = $(caller).attr('href');
+      var section = $(caller).attr('href') || $(caller).data('href');
       dom.htmlBody.stop().animate({
         scrollTop: $(section).offset().top
       }, 700, function() {
@@ -252,7 +252,7 @@
     function sendMail(e){
 
       e.preventDefault();
-      goTo('#contact');
+      goTo(e.target);
 
       $.ajax({
 
