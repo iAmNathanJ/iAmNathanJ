@@ -13,7 +13,7 @@
     align-items stretch
     align-content space-between
     max-width 100%
-  
+
   label
     position absolute
     top -9999px
@@ -22,7 +22,7 @@
 
   input,
   textarea
-    
+
     &::-webkit-input-placeholder
       color black50
 
@@ -58,8 +58,9 @@
 
   textarea
     height 200px
-  
-  button
+
+  button,
+  input[type=submit]
     @extend .noselect
     font-size 1.5rem
     font-weight 300
@@ -69,15 +70,14 @@
 
     &:hover
       background white60
-    
+
     img
       display inline
       max-width 20px
       height auto
       margin 0 10px
-  
+
   p
     font-size 1.2rem
     text-align left
     margin 0 5px 10px
-  
