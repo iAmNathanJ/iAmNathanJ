@@ -120,6 +120,7 @@
     // D O M   M A N I P U L A T I O N
 
     function hideNav() {
+      console.log(dom.nav);
       dom.nav.removeClass('down');
     }
 
