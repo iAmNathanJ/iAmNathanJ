@@ -13,7 +13,7 @@
     var elemWidth = function(elem){
       return elem.width();
     };
-
+    
     var getNav = function(){
       return mobile() ?  $('nav#mobile-nav') : $('nav#standard-nav');
     };
