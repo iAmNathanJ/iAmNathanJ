@@ -31,16 +31,18 @@ a.blog-link
     .blog-subtitle
       transform translateX(16px)
 
-  .blog-title
-    font-size 1.4rem
+  .blog-title,
+  .blog-subtitle
+    transform translateX(0)
     transition transform .2s ease-out
     will-change transform
+
+  .blog-title
+    font-size 1.4rem
 
   .blog-subtitle
     font-size 1rem
     color black80
-    transition transform .2s ease-out
-    will-change transform
 
   .blog-date
     position absolute
