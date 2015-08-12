@@ -14,7 +14,7 @@
 
   &:hover
     fill pink
-  
+
 .project
   @extend .noselect
   display block
@@ -29,22 +29,22 @@
 
   &:nth-child(odd)
     margin-right 4%
-  
+
   @media screen and (max-width 768px)
     max-width 100%
-    
+
     &:nth-child(odd)
       margin-right 0
-    
+
   &:before
     content attr(data-title)
     display block
     margin 0
     padding 20px 20px 0
-    font-weight 300
+    font-weight baseFontWeight
     color white80
     text-align center
-  
+
   @media screen and (max-width 460px)
     &:before
       text-align center
@@ -60,7 +60,7 @@
     img.browser-bar
       max-width 100%
       height 100%
-    
+
     img.screenshot
       margin 0 0 -5px
       max-width 100%
@@ -70,7 +70,7 @@
 
       &.mouseover
         opacity 1
-      
+
     .hit-area
       position absolute
       width 100%
@@ -80,7 +80,7 @@
       overflow hidden
       background transparent
       cursor pointer
-    
+
     .centered
       display flex
       justify-content center
@@ -103,25 +103,25 @@
           margin-top 0
           width 200px
           height 100px
-      
+
       .hover-card
         width 100%
         height 100%
         font-size 10rem
-        font-weight 700
+        font-weight heavyFontWeight
         color black40
         background #000
         opacity 0.1
         transition all 200ms ease-out
-      
+
         &.mouseover
           opacity 0
-        
+
       .hover-text
         margin-top 200%
         padding 10px
         font-size 2rem
-        font-weight 700
+        font-weight heavyFontWeight
         text-align center
         letter-spacing 2rem
         color black60
@@ -131,19 +131,19 @@
         &.mouseover
           margin-top 0
           letter-spacing 0
-      
+
   @media screen and (max-width 640px)
     p,
     ul,
     a
       font-size 0.9rem
-    
+
   @media screen and (max-width 480px)
     p,
     ul,
     a
       font-size 0.8rem
-    
+
 .project-view
   display none
   flex-flow column nowrap
@@ -162,7 +162,7 @@
 
   &.show
     display flex
-  
+
   .project-header
     order 1
     display flex
@@ -177,12 +177,12 @@
     //     opacity 0
     //     margin-left -10%
     //     width 120%
-      
+
     //   to
     //     opacity 1
     //     margin-left 0
     //     width 100%
-  
+
   .project-info
     order 1
     flex-grow 1
@@ -190,17 +190,17 @@
     flex-flow column nowrap
     justify-content center
     align-items center
-  
+
   h3
     flex-grow 0
     margin 0
     font-size 2rem
-    font-weight 300
+    font-weight baseFontWeight
     letter-spacing -0.1rem
     text-transform uppercase
     text-align center
     color black70
-  
+
   .close-button
     order 2
     padding 40px
@@ -212,7 +212,7 @@
 
     &:hover
       background green
-    
+
 .project-body
   order 2
   display flex
@@ -226,18 +226,18 @@
 
   @media screen and (max-width 768px)
     padding 0
-  
+
   // @include animate(show-project, 400ms, forwards, ease-out)
   //   from
   //     opacity 0
   //     margin-left -10%
   //     width 120%
-    
+
   //   to
   //     opacity 1
   //     margin-left 0
   //     width 100%
-    
+
   .img-container
     order 2
     flex 1 1 480px
@@ -254,11 +254,11 @@
       flex-basis 100%
       margin 0
       padding 0
-    
+
     img
       max-width 100%
       height auto
-    
+
   .arrow-button
     @extend .noselect
     display block
@@ -266,7 +266,7 @@
     width 50px
     height 50px
     font-size 50px
-    font-weight 700
+    font-weight heavyFontWeight
     text-align center
     line-height 40px
     color white60
@@ -277,10 +277,10 @@
 
     &.left
       order 1
-    
+
     &.right
       order 3
-    
+
     &:hover
       background green
 
