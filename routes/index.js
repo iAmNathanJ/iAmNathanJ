@@ -21,7 +21,8 @@ router.get('/', function(req, res, next) {
       var posts = [];
       parseString(body, function(err, result) {
         var entries = result.rss.channel[0].item;
-        for(var i = 0; i < entries.length; i++) {
+        var postLimit = entries.length > 5 ? 5 : entries.length;
+        for(var i = 0; i < postLimit; i++) {
           posts.push({
             title: entries[i].title,
             subtitle: entries[i].subtitle,
