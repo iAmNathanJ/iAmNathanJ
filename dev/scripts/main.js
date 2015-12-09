@@ -151,9 +151,9 @@
 
     function revealHeadings(){
       dom.allSections.each(function(i, elem){
-        if(scroll.isInside($(elem), -dom.win.height()-300)){
-          $(this).find('h2').addClass('active')
-            .parent().siblings().find('h2').removeClass('active');
+        if(scroll.isInside($(elem), -dom.win.height())){
+          $(this).find('h2').addClass('active');
+          $(this).siblings().find('h2').removeClass('active');
         }
       });
     }
