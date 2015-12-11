@@ -22,7 +22,7 @@
     "request": "^2.60.0",
     "sendgrid": "^1.6.0",
     "serve-favicon": "~2.2.0",
-    "xml2js": "^0.4.9"
+    "xml2js": "0.4.9"
   },
   "devDependencies": {
     "apache-server-configs": "^2.7.1",
