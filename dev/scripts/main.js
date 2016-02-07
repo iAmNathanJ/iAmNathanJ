@@ -12,7 +12,7 @@
     var elemWidth = function(elem){
       return elem.width();
     };
-    
+
     var getNav = function(){
       return mobile() ?  $('nav#mobile-nav') : $('nav#standard-nav');
     };
@@ -184,7 +184,7 @@
       windowScroll: function(){
         scrollToggleNav();
         setNavColors();
-        revealHeadings();
+        // revealHeadings();
       },
       bodyClick: function(e){
         e.stopPropagation();
