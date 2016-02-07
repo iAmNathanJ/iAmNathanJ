@@ -46,6 +46,15 @@ router.get('/feed', function(req, res, next) {
   res.redirect('http://blog.iamnathanj.com/feed.xml');
 });
 
+router.get('/game-of-life', function(req, res, next) {
+  // res.render('game-of-life', { title: 'iAmNathanJ::Game of Life'});
+  res.render('game-of-life');
+});
+
+// router.get('/game-of-life/api' function(req, res, next) {
+//   res.json();
+// });
+
 router.get(/[\w\W\s]/, function(req, res, next) {
   res.redirect('/');
 });
