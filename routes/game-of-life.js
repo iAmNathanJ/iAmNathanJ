@@ -38,7 +38,7 @@ module.exports = function life() {
 
     generate(s) {
 
-      let state = s || this.state
+      let state = s || this.state;
       let neighborCount;
 
       return state = state.map((row, i) => {

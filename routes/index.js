@@ -47,12 +47,12 @@ router.get('/feed', function(req, res, next) {
 });
 
 router.get('/game-of-life', function(req, res, next) {
-  res.render('game-of-life', { title: 'iAmNathanJ::Game of Life'});
+  res.render('game-of-life', { title: 'iAmNathanJ::Game of Life' });
 });
 
 router.get('/game-of-life/api', function(req, res, next) {
-  var life = gameOfLife();
   var state = req.query.state || null;
+  var life = gameOfLife();
   if(state) {
     res.json(life.generate(state));
   } else {
