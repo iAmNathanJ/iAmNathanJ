@@ -4,14 +4,13 @@ var fs = require('fs')
   , nconf = require('nconf')
   , parseString = require('xml2js').parseString
   , express = require('express')
-  , router = express.Router()
-  , life = require('./game-of-life.js');;
+  , router = express.Router();
 
 nconf.file('./.app-variables.json');
 
 var sendgrid = require('sendgrid')(nconf.get('sendgrid:user'), nconf.get('sendgrid:key'));
 var validate = require('./validate.js');
-
+var gameOfLife = require('./game-of-life.js');
 
 // ~ G E T
 
@@ -52,21 +51,19 @@ router.get('/game-of-life', function(req, res, next) {
 });
 
 router.get('/game-of-life/api', function(req, res, next) {
-  res.json({
-    "matrix": [
-      "10101010",
-      "10101010",
-      "10101010",
-      "10101010",
-      "10101010",
-      "10101010",
-      "10101010",
-      "10101010"
-    ]
-  });
+  var life = gameOfLife();
+  var state = req.query.state || null;
+  if(state) {
+    res.json(life.generate(state));
+  } else {
+    life.seed();
+    res.json(life.generate());
+  }
+
+
 });
 
-router.get(/[\w\W\s]/, function(req, res, next) {
+router.get(/.*/, function(req, res, next) {
   res.redirect('/');
 });
 
