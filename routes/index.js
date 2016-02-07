@@ -1,10 +1,11 @@
 var fs = require('fs')
   , http = require('http')
-  , nconf = require('nconf')
   , request = require('request')
+  , nconf = require('nconf')
   , parseString = require('xml2js').parseString
   , express = require('express')
-  , router = express.Router();
+  , router = express.Router()
+  , life = require('./game-of-life.js');;
 
 nconf.file('./.app-variables.json');
 
@@ -47,13 +48,23 @@ router.get('/feed', function(req, res, next) {
 });
 
 router.get('/game-of-life', function(req, res, next) {
-  // res.render('game-of-life', { title: 'iAmNathanJ::Game of Life'});
-  res.render('game-of-life');
+  res.render('game-of-life', { title: 'iAmNathanJ::Game of Life'});
 });
 
-// router.get('/game-of-life/api' function(req, res, next) {
-//   res.json();
-// });
+router.get('/game-of-life/api', function(req, res, next) {
+  res.json({
+    "matrix": [
+      "10101010",
+      "10101010",
+      "10101010",
+      "10101010",
+      "10101010",
+      "10101010",
+      "10101010",
+      "10101010"
+    ]
+  });
+});
 
 router.get(/[\w\W\s]/, function(req, res, next) {
   res.redirect('/');
