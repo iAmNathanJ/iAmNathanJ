@@ -40,10 +40,7 @@ gulp.task('css', function() {
 });
 
 gulp.task('js', function() {
-  gulp.src('./dev/scripts/play-game-of-life.js')
-    .pipe(uglify())
-    .pipe(gulp.dest(paths.js.build));
-
+  gulp.src('./dev/scripts/play-game-of-life.js').pipe(gulp.dest(paths.js.build));
   gulp.src(paths.js.src)
     .pipe(concat('main.min.js'))
     .pipe(uglify())
