@@ -28,19 +28,24 @@
     return queryString.join('&');
   }
 
+  // GAME OF LIFE
   (function generateLife(data) {
+
     let xhr = new XMLHttpRequest();
+
     xhr.open('GET', `/game-of-life/api?${data}`);
     xhr.send();
     xhr.addEventListener('load', (e) => {
 
-      let msg = JSON.parse(e.target.response);
-      console.log(msg);
+      let state = JSON.parse(e.target.response);
+      console.log(state);
 
-      let newData = { state: msg };
+      let newData = { state: state };
       setTimeout(() => {
         generateLife(serialize(newData));
       }, 2000);
+
+      e.target.removeEventListener('load');
     });
   })();
 
