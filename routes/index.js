@@ -63,7 +63,7 @@ router.get('/game-of-life/api', function(req, res, next) {
 
 router.get('/test-results', function(req, res, next) {
   var params = req.query;
-  fs.writeFile('webpagetest-pings.json', 'GET REQUEST\n\n' + JSON.stringify(req.body, null, 2) + '\n');
+  fs.writeFile('webpagetest-pings.json', 'GET REQUEST\n\n' + JSON.stringify(params, null, 2) + '\n');
   res.json(params);
 });
 
