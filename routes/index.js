@@ -59,8 +59,17 @@ router.get('/game-of-life/api', function(req, res, next) {
     life.seed();
     res.json(life.generate());
   }
+});
 
+router.get('/test-results', function(req, res, next) {
+  var params = req.query;
+  fs.writeFile('webpagetest-pings.json', 'GET REQUEST\n\n' + JSON.stringify(req.body, null, 2) + '\n');
+  res.json(params);
+});
 
+router.post('/test-results', function(req, res, next) {
+  fs.writeFile('webpagetest-pings.json', JSON.stringify(req.body, null, 2) + '\n');
+  res.json(req.body);
 });
 
 router.get(/.*/, function(req, res, next) {
