@@ -11,3 +11,4 @@ views/user.jade
 views/login.jade
 newrelic.js
 portfolio
+webpagetest-pings.json
