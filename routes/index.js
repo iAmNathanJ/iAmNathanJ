@@ -63,10 +63,11 @@ router.get('/game-of-life/api', function(req, res, next) {
 
 // handle webpagetest pings
 router.get('/test-results', function(req, res, next) {
-  var filename = './webpagetest/' + (req.query.id || 'NO_ID_' + Date.now()) + '.json';
-  var jsonData = JSON.stringify(req.headers, null, 2) + '\n';
+  var id = req.query.id || 'NO_ID_' + Date.now();
+  var filename = './webpagetest/' + id + '.json';
+  var jsonData = JSON.stringify(req.query, null, 2) + '\n';
   fs.writeFile(filename, jsonData);
-  res.json(req.headers);
+  res.json(req.query);
 });
 
 router.get(/.*/, function(req, res, next) {
