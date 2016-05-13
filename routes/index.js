@@ -74,8 +74,6 @@ router.get(/.*/, function(req, res, next) {
   res.redirect('/');
 });
 
-
-
 // ~ P O S T ~   M A I L   F O R M
 
 router.post('/mail', function(req, res) {
