@@ -67,7 +67,7 @@ router.get('/test-results', function(req, res, next) {
   var id = req.query.id || res.end();
   request.get('http://www.webpagetest.org/jsonResult.php?test=' + id, function(err, head, body) {
     if(err) console.log(err);
-    var filename = body.data.label + '.json';
+    var filename = './webpagetest/' + body.data.label + '.json';
     var jsonData = JSON.stringify(body, null, 2) + '\n';
     fs.writeFile(filename, jsonData);
   });
