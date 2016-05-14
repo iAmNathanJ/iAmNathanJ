@@ -63,10 +63,17 @@ router.get('/game-of-life/api', function(req, res, next) {
 
 // handle webpagetest pings
 router.get('/test-results', function(req, res, next) {
-  var id = req.query.id || 'NO_ID_' + Date.now();
-  var filename = './webpagetest/' + id + '.json';
-  var jsonData = JSON.stringify(req.query, null, 2) + '\n';
-  fs.writeFile(filename, jsonData);
+  // var id = req.query.id || 'NO_ID_' + Date.now();
+  var id = req.query.id || res.end();
+  request.get('http://www.webpagetest.org/jsonResult.php?test=' + id, function(err, head, body) {
+    if(err) console.log(err);
+    var filename = body.data.label + '.json';
+    var jsonData = JSON.stringify(body, null, 2) + '\n';
+    fs.writeFile(filename, jsonData);
+  });
+  // var filename = './webpagetest/' + id + '.json';
+  // var jsonData = JSON.stringify(req.query, null, 2) + '\n';
+  // fs.writeFile(filename, jsonData);
   res.json(req.query);
 });
 
