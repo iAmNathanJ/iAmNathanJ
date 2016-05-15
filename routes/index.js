@@ -63,18 +63,85 @@ router.get('/game-of-life/api', function(req, res, next) {
 
 // handle webpagetest pings
 router.get('/test-results', function(req, res, next) {
-  // var id = req.query.id || 'NO_ID_' + Date.now();
   var id = req.query.id || res.end();
   request.get('http://www.webpagetest.org/jsonResult.php?test=' + id, function(err, head, body) {
     if(err) console.log(err);
-    var filename = './webpagetest/' + body.data.label + '.json';
-    var jsonData = JSON.stringify(body, null, 2) + '\n';
-    fs.writeFile(filename, jsonData);
+    var data = JSON.parse(body).data;
+
+    var firstView = data.runs['1'].firstView;
+    var model = [
+      'loadTime',       // load time
+      'TTFB',           // ttfb
+      'render',         // start render
+      'SpeedIndex',     // speed index
+
+      'docTime',        // document complete
+      'fullyLoaded',    // fully loaded
+      'visualComplete', // visually complete
+
+      'score_cache',    // cache score
+      'score_gzip',     // gzip score
+      'image_total',    // image total
+
+      'requestsFull',   // request count
+      'bytesIn',        // page weight
+      'requests'        // all requests
+    ];
+
+    var simplifiedData = model.reduce(function(obj, property) {
+      if(property === 'requests') {
+        obj[property] = firstView[property].map(function(request) {
+          return {
+            url: request['url'],                   // url
+            contentType: request['contentType'],   // content type
+            load_start: +request['load_start'],    // request start
+            ttfb_ms: +request['ttfb_ms'],          // ttfb
+            load_ms: +request['load_ms'],          // loaded duration
+            load_end: +request['load_end'],        // loaded
+            bytesIn: +request['bytesIn']           // request weight
+          };
+        });
+      } else {
+        obj[property] = firstView[property];
+      }
+      return obj;
+    }, {});
+
+    var fileName = './webpagetest/' + data.label + '.json';
+    var fileData = JSON.stringify(simplifiedData, null, 2) + '\n';
+    fs.writeFile(fileName, fileData);
+    res.json(req.query);
   });
-  // var filename = './webpagetest/' + id + '.json';
-  // var jsonData = JSON.stringify(req.query, null, 2) + '\n';
-  // fs.writeFile(filename, jsonData);
-  res.json(req.query);
+
+  // First View: data.runs['1'].firstView
+
+    // load time: loadTime
+    // ttfb: TTFB
+    // start render: render
+    // speed index: SpeedIndex
+
+    // document complete: docTime
+    // fully loaded: fullyLoaded
+    // visually complete: visualComplete
+
+    // cache score: score_cache
+    // gzip score: score_gzip
+    // image total: image_total
+
+    // request count: requestsFull
+    // weight: bytesIn
+    // requests: requests
+      // content type: contentType
+      // content ID: type
+      // request start: load_start
+      // ttfb: ttfb_ms
+      // loaded duration: load_ms
+      // loaded: load_end
+      // weight: bytesIn
+
+  // Repeat View: data.runs['1'].repeatView
+
+
 });
 
 router.get(/.*/, function(req, res, next) {
