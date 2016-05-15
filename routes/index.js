@@ -107,6 +107,8 @@ router.get('/test-results', function(req, res, next) {
       return obj;
     }, {});
 
+    simplifiedData['testID'] = id;
+
     var fileName = './webpagetest/' + data.label + '.json';
     var fileData = JSON.stringify(simplifiedData, null, 2) + '\n';
     fs.writeFile(fileName, fileData);
