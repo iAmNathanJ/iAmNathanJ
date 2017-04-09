@@ -1,0 +1,15 @@
+section#things.things
+  .fence
+  .content
+    h2.color-red.border-light WRITING
+
+    section
+      h3 Recent Posts
+      for post in posts
+        a(class="blog-link" href="#{post.link}")
+          .blog-listing
+            .blog-title #{post.title}<br>
+            .blog-subtitle #{post.subtitle}
+            .blog-date 
+              .month #{post.month}
+              .day #{post.day}

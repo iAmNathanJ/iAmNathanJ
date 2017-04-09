@@ -3,17 +3,18 @@ var express = require('express')
   , favicon = require('serve-favicon')
   , logger = require('morgan')
   , cookieParser = require('cookie-parser')
-  , bodyParser = require('body-parser');
+  , bodyParser = require('body-parser')
+  , helmet = require('helmet');
 
 var routes = require('./routes/index')
   , users = require('./routes/users');
 
 var app = express();
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+app.use(helmet());
 app.use(favicon(__dirname + '/public/d52af4a4.favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
